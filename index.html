@@ -216,9 +216,10 @@
                         </p>
                     </div>
                     <div class="w-full md:w-5/12 pl-12 md:pl-0 mt-6 md:mt-0">
-                        <div class="max-w-sm mx-auto md:mr-auto bg-white rounded-sm overflow-hidden shadow-2xl">
-                            <iframe src="https://www.instagram.com/reel/DN7KyXGjkKH/embed/" title="Primer evento de la comunidad — Instagram Reel" class="w-full border-0" style="height: 540px;" loading="lazy" allowfullscreen></iframe>
+                        <div class="w-full bg-white rounded-sm overflow-hidden shadow-2xl">
+                            <iframe src="https://www.instagram.com/reel/DN7KyXGjkKH/embed/" title="Primer evento de la comunidad — Instagram Reel" class="w-full border-0" style="height: min(78vh, 780px); min-height: 520px;" loading="lazy" allow="fullscreen" allowfullscreen></iframe>
                         </div>
+                        <button type="button" id="instagram-fullscreen-btn" class="mt-3 w-full bg-brand-yellow text-brand-black px-4 py-3 font-bold hover:bg-white transition-colors" data-i18n="first_event_fullscreen">Ver en pantalla completa</button>
                         <p class="mt-3 text-center"><a href="https://www.instagram.com/reel/DN7KyXGjkKH/" target="_blank" rel="noopener noreferrer" class="text-brand-yellow underline hover:text-white" data-i18n="first_event_link">Ver el video en Instagram</a></p>
                     </div>
                 </div>
@@ -420,6 +421,14 @@
         </div>
     </div>
 
+    <!-- Instagram fullscreen overlay; Esc or close returns to story. -->
+    <div id="instagram-fullscreen" class="fixed inset-0 z-[110] bg-black hidden flex-col" role="dialog" aria-modal="true" aria-label="Instagram video">
+        <div class="flex justify-end p-2 bg-black">
+            <button type="button" id="instagram-fullscreen-close" class="text-white bg-brand-red px-5 py-3 font-bold" aria-label="Close fullscreen video">✕</button>
+        </div>
+        <iframe id="instagram-fullscreen-player" title="Primer evento — Instagram" class="w-full flex-1 border-0" data-src="https://www.instagram.com/reel/DN7KyXGjkKH/embed/" allow="fullscreen" allowfullscreen></iframe>
+    </div>
+
     <!-- Footer -->
     <footer class="bg-brand-black text-slate-400 py-12 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -459,6 +468,7 @@
                 community_video_desc: "Mira este video y conoce más perspectivas. También puedes abrirlo directamente en YouTube.",
                 community_video_link: "Ver en YouTube",
                 first_event_link: "Ver el video en Instagram",
+                first_event_fullscreen: "Ver en pantalla completa",
                 nav_story: "Nuestra Historia",
                 nav_education: "Educación",
                 nav_resources: "Recursos",
@@ -532,6 +542,7 @@
                 community_video_desc: "Watch this video to explore more perspectives. You can also open it directly on YouTube.",
                 community_video_link: "Watch on YouTube",
                 first_event_link: "Watch on Instagram",
+                first_event_fullscreen: "Watch fullscreen",
                 nav_story: "Our Story",
                 nav_education: "Education",
                 nav_resources: "Resources",
@@ -747,6 +758,30 @@
             alert(currentLang === "es" ? "Las inscripciones todavía no están disponibles." : "Signups are not available yet.");
             // Do not claim to have collected data before a real form backend is connected.
             document.getElementById('role-select').selectedIndex = 0;
+        });
+
+        // Expand Instagram reel within the site, with a direct Instagram fallback.
+        const instagramOverlay = document.getElementById('instagram-fullscreen');
+        const instagramPlayer = document.getElementById('instagram-fullscreen-player');
+        const instagramOpen = document.getElementById('instagram-fullscreen-btn');
+        const instagramClose = document.getElementById('instagram-fullscreen-close');
+        instagramOpen.addEventListener('click', () => {
+            instagramPlayer.src = instagramPlayer.dataset.src;
+            instagramOverlay.classList.remove('hidden');
+            instagramOverlay.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+            instagramClose.focus();
+        });
+        function closeInstagramFullscreen() {
+            instagramOverlay.classList.add('hidden');
+            instagramOverlay.classList.remove('flex');
+            instagramPlayer.removeAttribute('src');
+            document.body.style.overflow = '';
+            instagramOpen.focus();
+        }
+        instagramClose.addEventListener('click', closeInstagramFullscreen);
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && !instagramOverlay.classList.contains('hidden')) closeInstagramFullscreen();
         });
 
         // Initialize language on load (Default is Spanish as set in the HTML manually)
