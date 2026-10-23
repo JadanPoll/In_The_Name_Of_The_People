@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>En el Nombre del Pueblo | El Movimiento</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Montserrat (Headers) & Inter (Body) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Configuration for Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            black: '#0f172a',
+                            dark: '#1e293b',
+                            red: '#e11d48',    // Passion, urgency
+                            yellow: '#fbbf24', // Hope, youth, community
+                            light: '#f8fafc',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Animations and Movement Styles */
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+
+        .mural-bg {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(225, 29, 72, 0.8) 100%), 
+                        url('https://placehold.co/1920x1080/222/555?text=Community+Mural') center/cover no-repeat;
+            background-attachment: fixed;
+        }
+
+        /* Scroll Reveal Classes */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        .reveal-left { opacity: 0; transform: translateX(-50px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal-left.active { opacity: 1; transform: translateX(0); }
+
+        .reveal-right { opacity: 0; transform: translateX(50px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal-right.active { opacity: 1; transform: translateX(0); }
+
+        /* Timeline Styles */
+        .timeline-container { position: relative; }
+        .timeline-line {
+            position: absolute; left: 50%; top: 0; bottom: 0; width: 4px; background: #e11d48; transform: translateX(-50%); z-index: 0;
+        }
+        @media (max-width: 768px) {
+            .timeline-line { left: 24px; transform: none; }
+        }
+        .timeline-dot {
+            width: 24px; height: 24px; background: #fbbf24; border: 4px solid #0f172a; border-radius: 50%; position: absolute; left: 50%; transform: translate(-50%, -50%); z-index: 10; transition: all 0.3s ease;
+        }
+        @media (max-width: 768px) {
+            .timeline-dot { left: 26px; transform: translate(0, -50%); }
+        }
+        .timeline-item:hover .timeline-dot {
+            transform: translate(-50%, -50%) scale(1.3); background: #e11d48;
+        }
+        @media (max-width: 768px) {
+            .timeline-item:hover .timeline-dot { transform: translate(0, -50%) scale(1.3); }
+        }
+
+        /* Video Play Button Pulse */
+        .play-btn-pulse { animation: pulse-ring 2s infinite; }
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(251, 191, 36, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
+        }
+        
+        /* Language Switcher */
+        .lang-btn.active { color: #fbbf24; font-weight: 800; }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-brand-yellow selection:text-brand-black">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-brand-black/90 backdrop-blur-md border-b border-white/10" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="w-10 h-10 bg-brand-red flex items-center justify-center text-white rounded-sm transform -rotate-3">
+                        <i class="fa-solid fa-bullhorn text-xl"></i>
+                    </div>
+                    <span class="font-display font-black text-2xl tracking-tighter text-white uppercase">En el Nombre <span class="text-brand-yellow">del Pueblo</span></span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#story" data-i18n="nav_story" class="text-white hover:text-brand-yellow font-medium transition-colors text-sm uppercase tracking-widest">Nuestra Historia</a>
+                    <a href="#education" data-i18n="nav_education" class="text-white hover:text-brand-yellow font-medium transition-colors text-sm uppercase tracking-widest">Educación</a>
+                    <a href="#resources" data-i18n="nav_resources" class="text-white hover:text-brand-yellow font-medium transition-colors text-sm uppercase tracking-widest">Recursos</a>
+                    
+                    <!-- Language Switcher Desktop -->
+                    <div class="flex items-center space-x-2 text-sm text-slate-400 font-bold border-l border-white/20 pl-6">
+                        <button onclick="setLanguage('es')" id="btn-es-desktop" class="lang-btn active hover:text-white transition-colors">ES</button>
+                        <span>|</span>
+                        <button onclick="setLanguage('en')" id="btn-en-desktop" class="lang-btn hover:text-white transition-colors">EN</button>
+                    </div>
+
+                    <a href="#join" data-i18n="nav_join" class="bg-brand-yellow hover:bg-white text-brand-black px-6 py-2.5 font-bold uppercase tracking-wider transition-all duration-300 transform hover:-translate-y-1">
+                        Únete al Movimiento
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center gap-4">
+                    <!-- Language Switcher Mobile (inline) -->
+                    <div class="flex items-center space-x-2 text-xs text-slate-400 font-bold">
+                        <button onclick="setLanguage('es')" id="btn-es-mobile" class="lang-btn active hover:text-white">ES</button>
+                        <span>|</span>
+                        <button onclick="setLanguage('en')" id="btn-en-mobile" class="lang-btn hover:text-white">EN</button>
+                    </div>
+
+                    <button id="mobile-menu-btn" class="text-white hover:text-brand-yellow focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-dark border-t border-white/10 absolute w-full shadow-2xl">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#story" data-i18n="nav_story" class="block px-3 py-3 text-white hover:bg-white/5 rounded font-medium uppercase tracking-wide">Nuestra Historia</a>
+                <a href="#education" data-i18n="nav_education" class="block px-3 py-3 text-white hover:bg-white/5 rounded font-medium uppercase tracking-wide">Educación</a>
+                <a href="#resources" data-i18n="nav_resources" class="block px-3 py-3 text-white hover:bg-white/5 rounded font-medium uppercase tracking-wide">Recursos</a>
+                <a href="#join" data-i18n="nav_join" class="block px-3 py-3 mt-4 text-center bg-brand-yellow text-brand-black font-bold uppercase tracking-wide">Únete al Movimiento</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center mural-bg pt-20 overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30 mix-blend-overlay pointer-events-none"></div>
+        
+        <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 reveal active">
+            <h1 data-i18n-html="hero_title" class="font-display text-5xl md:text-7xl lg:text-8xl font-black text-white uppercase leading-[0.9] tracking-tighter mb-8">
+                De nuestra historia, <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow to-orange-500">nace un movimiento.</span>
+            </h1>
+            
+            <div class="max-w-3xl mx-auto bg-brand-black/40 backdrop-blur-sm p-6 md:p-8 border-l-4 border-brand-red text-left mb-10">
+                <p data-i18n="hero_quote" class="text-xl md:text-3xl font-light text-white leading-relaxed">
+                    De los 17 a los 20 años estuve encarcelado. Mi historia continúa en la comunidad.
+                </p>
+                <p data-i18n="hero_author" class="mt-4 text-brand-yellow font-bold uppercase tracking-widest text-sm">— La historia de Bryan</p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-6 mt-12">
+                <a href="#story" class="bg-brand-red hover:bg-red-700 text-white px-8 py-4 font-bold text-lg uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-3 group">
+                    <span data-i18n="hero_cta">Escucha la Historia</span>
+                    <i class="fa-solid fa-arrow-down transform group-hover:translate-y-1 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story / Timeline Section -->
+    <section id="story" class="py-24 bg-brand-black relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20 reveal">
+                <h2 data-i18n="story_title" class="font-display text-4xl md:text-6xl font-black text-white uppercase tracking-tighter">La Trayectoria</h2>
+                <div class="w-24 h-2 bg-brand-red mx-auto mt-6"></div>
+                <p data-i18n="story_subtitle" class="mt-6 text-xl text-slate-400 max-w-2xl mx-auto">Lo que comenzó con la experiencia de una persona se convirtió en una misión para crear oportunidades, conexiones y cambio.</p>
+            </div>
+
+            <div class="timeline-container py-10 max-w-5xl mx-auto">
+                <div class="timeline-line"></div>
+
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item relative flex items-center justify-between w-full mb-24 reveal">
+                    <div class="timeline-dot top-1/2"></div>
+                    <div class="w-full md:w-5/12 pl-12 md:pl-0 md:pr-12 md:text-right">
+                        <span data-i18n="story_1_date" class="text-brand-red font-bold uppercase tracking-widest mb-2 block">De los 17 a los 20 años</span>
+                        <h3 data-i18n="story_1_title" class="font-display text-3xl font-black text-white mb-4">Perdiendo la juventud en el sistema</h3>
+                        <p data-i18n="story_1_desc" class="text-slate-300 leading-relaxed text-lg">
+                            Encarcelado durante los años más formativos de la vida. Esto no fue solo una pérdida de tiempo; fue una mirada de primera mano a la devastadora realidad del encarcelamiento masivo y cómo ataca sistemáticamente a las comunidades minoritarias e inmigrantes.
+                        </p>
+                    </div>
+                    <div class="hidden md:block w-5/12">
+                        <img src="https://placehold.co/600x400/1e293b/475569?text=Detras+de+los+Muros" alt="Incarceration representation" class="w-full h-auto shadow-2xl rounded-sm grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item relative flex items-center justify-between w-full mb-24 flex-row-reverse reveal">
+                    <div class="timeline-dot top-1/2"></div>
+                    <div class="w-full md:w-5/12 pl-12 md:pl-12">
+                        <span data-i18n="story_2_date" class="text-brand-yellow font-bold uppercase tracking-widest mb-2 block">El Regreso</span>
+                        <h3 data-i18n="story_2_title" class="font-display text-3xl font-black text-white mb-4">La Chispa de la Comunidad</h3>
+                        <p data-i18n="story_2_desc" class="text-slate-300 leading-relaxed text-lg">
+                            Al salir a los 20 años, la motivación no era solo sobrevivir, era la transformación. Bryan comenzó a organizar eventos locales, reuniendo a las personas y creando espacios seguros para sanar y discutir las realidades de las que nadie quería hablar.
+                        </p>
+                    </div>
+                    <div class="hidden md:block w-5/12 text-right">
+                        <img src="https://placehold.co/600x400/eab308/111827?text=Primeros+Eventos" alt="Community Event" class="w-full h-auto shadow-2xl rounded-sm ml-auto opacity-90 hover:opacity-100 transition-all duration-500">
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item relative flex items-center justify-between w-full reveal">
+                    <div class="timeline-dot top-1/2"></div>
+                    <div class="w-full md:w-5/12 pl-12 md:pl-0 md:pr-12 md:text-right">
+                        <span data-i18n="story_3_date" class="text-white font-bold uppercase tracking-widest mb-2 block">El Presente</span>
+                        <h3 data-i18n="story_3_title" class="font-display text-3xl font-black text-brand-red mb-4">En el Nombre del Pueblo</h3>
+                        <p data-i18n="story_3_desc" class="text-slate-300 leading-relaxed text-lg">
+                            Estamos construyendo una iniciativa comunitaria para educar sobre el encarcelamiento masivo y explorar oportunidades de apoyo para inmigrantes y jóvenes.
+                        </p>
+                    </div>
+                    <div class="hidden md:block w-5/12">
+                        <img src="https://placehold.co/600x400/e11d48/ffffff?text=El+Movimiento" alt="The Movement Today" class="w-full h-auto shadow-2xl rounded-sm">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Video/Education Section -->
+    <section id="education" class="py-24 bg-brand-dark border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                
+                <div class="reveal-left">
+                    <h2 data-i18n-html="edu_title" class="font-display text-4xl md:text-5xl font-black text-white uppercase tracking-tighter mb-6">
+                        El Costo Humano del <span class="text-brand-red">Encarcelamiento</span>
+                    </h2>
+                    <p data-i18n="edu_desc" class="text-xl text-slate-300 mb-8 leading-relaxed">
+                        No solo hablamos de estadísticas; mostramos los rostros humanos detrás de ellas. Desde El Salvador hasta los EE. UU., el encarcelamiento masivo destruye familias. Usamos la educación como nuestra mayor arma para el cambio.
+                    </p>
+                    <ul class="space-y-6 mb-10">
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 w-10 h-10 rounded bg-brand-black border border-brand-yellow flex items-center justify-center text-brand-yellow mt-1">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 data-i18n="edu_point1_title" class="text-white font-bold text-lg uppercase tracking-wide">Familias y Comunidades</h4>
+                                <p data-i18n="edu_point1_desc" class="text-slate-400 mt-1">Conectando el encarcelamiento individual con las amplias consecuencias comunitarias.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 w-10 h-10 rounded bg-brand-black border border-brand-yellow flex items-center justify-center text-brand-yellow mt-1">
+                                <i class="fa-solid fa-scale-balanced"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 data-i18n="edu_point2_title" class="text-white font-bold text-lg uppercase tracking-wide">Rehabilitación vs. Castigo</h4>
+                                <p data-i18n="edu_point2_desc" class="text-slate-400 mt-1">Presentando preguntas difíciles sobre el verdadero propósito del sistema de justicia.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Video Iframe Integration -->
+                <div class="relative group reveal-right w-full aspect-video shadow-[0_0_30px_rgba(225,29,72,0.3)]">
+                    <iframe class="absolute inset-0 w-full h-full border border-slate-700 rounded-sm" src="https://www.youtube.com/embed/cOpKWxcr3WE?start=1440" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources / How We Help Section -->
+    <section id="resources" class="py-24 bg-brand-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 data-i18n="res_title" class="font-display text-4xl md:text-5xl font-black text-white uppercase tracking-tighter mb-4 reveal">Apoyo y Acción</h2>
+            <p data-i18n="res_desc" class="text-xl text-slate-400 max-w-3xl mx-auto mb-16 reveal">Existimos para ayudar a nuestra comunidad inmigrante a construir bases sólidas a través de recursos directos, conexiones robustas y oportunidades tangibles.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Resource 1 -->
+                <div class="bg-brand-dark p-8 border-t-4 border-brand-yellow hover:-translate-y-2 transition-transform duration-300 reveal">
+                    <div class="text-brand-yellow text-5xl mb-6"><i class="fa-solid fa-hand-holding-hand"></i></div>
+                    <h3 data-i18n="res_1_title" class="text-2xl font-display font-black text-white uppercase mb-4">Apoyo a Inmigrantes</h3>
+                    <p data-i18n="res_1_desc" class="text-slate-400 mb-6">Navegar por un nuevo país o un sistema roto es difícil. Queremos conectar a las personas con recursos confiables y oportunidades comunitarias.</p>
+                </div>
+
+                <!-- Resource 2 -->
+                <div class="bg-brand-dark p-8 border-t-4 border-brand-red hover:-translate-y-2 transition-transform duration-300 reveal delay-100">
+                    <div class="text-brand-red text-5xl mb-6"><i class="fa-solid fa-briefcase"></i></div>
+                    <h3 data-i18n="res_2_title" class="text-2xl font-display font-black text-white uppercase mb-4">Empleo y Crecimiento</h3>
+                    <p data-i18n="res_2_desc" class="text-slate-400 mb-6">Una segunda oportunidad no significa nada sin una oportunidad real. Buscamos colaborar con personas y organizaciones para abrir oportunidades de empleo y aprendizaje.</p>
+                </div>
+
+                <!-- Resource 3 -->
+                <div class="bg-brand-dark p-8 border-t-4 border-white hover:-translate-y-2 transition-transform duration-300 reveal delay-200">
+                    <div class="text-white text-5xl mb-6"><i class="fa-solid fa-people-group"></i></div>
+                    <h3 data-i18n="res_3_title" class="text-2xl font-display font-black text-white uppercase mb-4">Comunidad y Red</h3>
+                    <p data-i18n="res_3_desc" class="text-slate-400 mb-6">No estás solo. Conoce la iniciativa y las formas de contribuir a futuras actividades comunitarias.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Join The Movement Form -->
+    <section id="join" class="py-24 relative bg-brand-dark overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-red via-brand-yellow to-brand-red"></div>
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-brand-red/10 rounded-full blur-3xl"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 reveal">
+            <div class="bg-brand-black border border-white/10 p-8 md:p-12 shadow-2xl">
+                <div class="text-center mb-10">
+                    <h2 data-i18n="form_title" class="font-display text-4xl md:text-5xl font-black text-white uppercase tracking-tighter mb-4">Apóyanos</h2>
+                    <p data-i18n="form_desc" class="text-slate-400 text-lg">Ya sea que quieras ser voluntario en nuestros eventos, patrocinar nuestra misión o compartir tu propia historia, este movimiento es construido por la gente.</p>
+                </div>
+
+                <p class="text-center text-brand-yellow mb-8" data-i18n="signup_pending">Volunteer registration is being prepared. Please check back soon. No information is being collected on this page yet.</p>
+                <form id="movement-form" class="space-y-6" hidden style="display:none">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label data-i18n="form_fname" for="firstName" class="block text-sm font-bold text-slate-300 uppercase tracking-wide mb-2">Nombre *</label>
+                            <input type="text" id="firstName" required class="w-full px-4 py-3 bg-brand-dark border border-slate-700 text-white focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow outline-none transition-colors rounded-none">
+                        </div>
+                        <div>
+                            <label data-i18n="form_lname" for="lastName" class="block text-sm font-bold text-slate-300 uppercase tracking-wide mb-2">Apellido *</label>
+                            <input type="text" id="lastName" required class="w-full px-4 py-3 bg-brand-dark border border-slate-700 text-white focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow outline-none transition-colors rounded-none">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label data-i18n="form_email" for="email" class="block text-sm font-bold text-slate-300 uppercase tracking-wide mb-2">Correo Electrónico *</label>
+                            <input type="email" id="email" required class="w-full px-4 py-3 bg-brand-dark border border-slate-700 text-white focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow outline-none transition-colors rounded-none">
+                        </div>
+                        <div>
+                            <label data-i18n="form_phone" for="phone" class="block text-sm font-bold text-slate-300 uppercase tracking-wide mb-2">Número de Teléfono</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-3 bg-brand-dark border border-slate-700 text-white focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow outline-none transition-colors rounded-none">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label data-i18n="form_role" for="role-select" class="block text-sm font-bold text-slate-300 uppercase tracking-wide mb-2">¿Cómo quieres ayudar? *</label>
+                        <div class="relative">
+                            <select id="role-select" required class="w-full px-4 py-3 bg-brand-dark border border-slate-700 text-white focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow outline-none transition-colors rounded-none appearance-none cursor-pointer">
+                                <option data-i18n="form_opt_default" value="" disabled selected>Selecciona una opción</option>
+                                <option data-i18n="form_opt_1" value="toy_drive">Colecta de Juguetes (Toy Drive)</option>
+                                <option data-i18n="form_opt_2" value="mentor">Apoyo y Mentoría Juvenil</option>
+                                <option data-i18n="form_opt_3" value="volunteer">Voluntario General en Eventos</option>
+                                <option data-i18n="form_opt_4" value="story">Compartir mi historia / Necesito ayuda</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-brand-yellow">
+                                <i class="fa-solid fa-chevron-down text-sm"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label data-i18n="form_msg" for="message" class="block text-sm font-bold text-slate-300 uppercase tracking-wide mb-2">Tu Mensaje (Opcional)</label>
+                        <textarea id="message" rows="4" class="w-full px-4 py-3 bg-brand-dark border border-slate-700 text-white focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow outline-none transition-colors rounded-none resize-none" placeholder="..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-brand-yellow hover:bg-white text-brand-black font-black uppercase tracking-widest text-lg py-5 transition-all duration-300 hover:shadow-[0_0_20px_rgba(251,191,36,0.4)] flex justify-center items-center gap-3">
+                        <span data-i18n="form_btn">Enviar Información</span>
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                    <p data-i18n="form_note" class="text-center text-xs text-slate-500 mt-4">* Para pruebas rápidas: Estos datos pueden vincularse directamente a un Google Form.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Action Floating Button -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+        <div id="quick-action-menu" class="hidden bg-brand-dark border border-slate-700 p-4 shadow-2xl mb-4 w-64 transform transition-all origin-bottom-right">
+            <h4 data-i18n="qa_title" class="text-white font-bold mb-3 uppercase tracking-wide border-b border-slate-700 pb-2">Acción Rápida</h4>
+            <div class="space-y-2">
+                <button onclick="scrollToForm('toy_drive')" class="w-full text-left p-3 bg-brand-black hover:bg-brand-red text-white transition-colors text-sm flex items-center gap-3 group">
+                    <i class="fa-solid fa-gift text-brand-yellow group-hover:text-white animate-pulse"></i> 
+                    <span data-i18n="qa_toy">Colecta de Juguetes</span>
+                </button>
+                <button onclick="scrollToForm('mentor')" class="w-full text-left p-3 bg-brand-black hover:bg-brand-red text-white transition-colors text-sm flex items-center gap-3 group">
+                    <i class="fa-solid fa-shield-halved text-brand-yellow group-hover:text-white"></i> 
+                    <span data-i18n="qa_mentor">Apoyo Juvenil</span>
+                </button>
+            </div>
+        </div>
+        <button id="quick-action-btn" class="w-14 h-14 bg-brand-red hover:bg-brand-yellow text-white hover:text-brand-black rounded-full shadow-[0_0_15px_rgba(225,29,72,0.5)] flex items-center justify-center text-2xl transition-all duration-300 animate-bounce">
+            <i class="fa-solid fa-bolt"></i>
+        </button>
+    </div>
+
+    <!-- Custom Modal for Success Message -->
+    <div id="success-modal" class="fixed inset-0 z-[100] hidden items-center justify-center">
+        <div class="absolute inset-0 bg-brand-black/80 backdrop-blur-md transition-opacity opacity-0" id="modal-backdrop"></div>
+        <div class="relative bg-brand-dark border border-slate-700 p-8 max-w-md w-full mx-4 shadow-2xl transform scale-95 opacity-0 transition-all duration-300" id="modal-content">
+            <div class="w-20 h-20 bg-brand-yellow rounded-full flex items-center justify-center mx-auto mb-6">
+                <i class="fa-solid fa-check text-4xl text-brand-black"></i>
+            </div>
+            <h3 data-i18n="modal_title" class="font-display text-3xl font-black text-center text-white uppercase tracking-tighter mb-4">Bienvenido al Movimiento</h3>
+            <p class="text-center text-slate-400 mb-8 text-lg" id="modal-message">Gracias. Hemos recibido tu información y nos pondremos en contacto contigo pronto.</p>
+            <button id="close-modal-btn" data-i18n="modal_btn" class="w-full bg-brand-red hover:bg-red-700 text-white font-bold uppercase tracking-widest py-4 transition-colors">
+                Cerrar
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-brand-black text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-brand-red flex items-center justify-center text-white rounded-sm transform -rotate-3">
+                        <i class="fa-solid fa-bullhorn text-xs"></i>
+                    </div>
+                    <span class="font-display font-black text-xl tracking-tighter text-white uppercase">En el Nombre <span class="text-brand-yellow">del Pueblo</span></span>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="text-slate-500 hover:text-brand-yellow transition-colors text-xl"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="text-slate-500 hover:text-brand-yellow transition-colors text-xl"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="text-slate-500 hover:text-brand-yellow transition-colors text-xl"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="text-slate-500 hover:text-brand-yellow transition-colors text-xl"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 mt-8 pt-8 text-center md:text-left flex flex-col md:flex-row justify-between text-sm">
+                <p>&copy; <span id="year"></span> En el Nombre del Pueblo. <span data-i18n="footer_slogan">Construido por la gente, para la gente.</span></p>
+                <div class="mt-4 md:mt-0 space-x-4">
+                    <a href="#join" data-i18n="footer_privacy" class="hover:text-white transition-colors">Política de Privacidad</a>
+                    <a href="#join" data-i18n="footer_terms" class="hover:text-white transition-colors">Términos de Servicio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Localization Data Dictionary
+        const translations = {
+            es: {
+                signup_pending: "Estamos preparando el registro de voluntarios. Regresa pronto. Por ahora no recopilamos datos en esta página.",
+                nav_story: "Nuestra Historia",
+                nav_education: "Educación",
+                nav_resources: "Recursos",
+                nav_join: "Únete al Movimiento",
+                
+                hero_title: `De nuestra historia, <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow to-orange-500">nace un movimiento.</span>`,
+                hero_quote: `De los 17 a los 20 años estuve encarcelado. Mi historia continúa en la comunidad.`,
+                hero_author: "— Bryan, Fundador",
+                hero_cta: "Escucha la Historia",
+                
+                story_title: "La Trayectoria",
+                story_subtitle: "Lo que comenzó con la experiencia de una persona se convirtió en una misión para crear oportunidades, conexiones y cambio.",
+                story_1_date: "De los 17 a los 20 años",
+                story_1_title: "Perdiendo la juventud en el sistema",
+                story_1_desc: "Encarcelado durante los años más formativos de la vida. Esto no fue solo una pérdida de tiempo; fue una mirada de primera mano a la devastadora realidad del encarcelamiento masivo y cómo ataca sistemáticamente a las comunidades minoritarias e inmigrantes.",
+                story_2_date: "El Regreso",
+                story_2_title: "La Chispa de la Comunidad",
+                story_2_desc: "Al salir a los 20 años, la motivación no era solo sobrevivir, era la transformación. Bryan comenzó a organizar eventos locales, reuniendo a las personas y creando espacios seguros para sanar y discutir las realidades de las que nadie quería hablar.",
+                story_3_date: "El Presente",
+                story_3_title: "En el Nombre del Pueblo",
+                story_3_desc: "Estamos construyendo una iniciativa comunitaria para educar sobre el encarcelamiento masivo y explorar oportunidades de apoyo para inmigrantes y jóvenes.",
+                
+                edu_title: `El Costo Humano del <span class="text-brand-red">Encarcelamiento</span>`,
+                edu_desc: "No solo hablamos de estadísticas; mostramos los rostros humanos detrás de ellas. Desde El Salvador hasta los EE. UU., el encarcelamiento masivo destruye familias. Usamos la educación como nuestra mayor arma para el cambio.",
+                edu_point1_title: "Familias y Comunidades",
+                edu_point1_desc: "Conectando el encarcelamiento individual con las amplias consecuencias comunitarias.",
+                edu_point2_title: "Rehabilitación vs. Castigo",
+                edu_point2_desc: "Presentando preguntas difíciles sobre el verdadero propósito del sistema de justicia.",
+                vid_tag: "Clip Destacado",
+                vid_title: "Ver: Humanidad Detrás de los Muros",
+
+                res_title: "Apoyo y Acción",
+                res_desc: "Existimos para ayudar a nuestra comunidad inmigrante a construir bases sólidas a través de recursos directos, conexiones robustas y oportunidades tangibles.",
+                res_1_title: "Apoyo a Inmigrantes",
+                res_1_desc: "Navegar por un nuevo país o un sistema roto es difícil. Queremos conectar a las personas con recursos confiables y oportunidades comunitarias.",
+                res_2_title: "Empleo y Crecimiento",
+                res_2_desc: "Una segunda oportunidad no significa nada sin una oportunidad real. Buscamos colaborar con personas y organizaciones para abrir oportunidades de empleo y aprendizaje.",
+                res_3_title: "Comunidad y Red",
+                res_3_desc: "No estás solo. Conoce la iniciativa y las formas de contribuir a futuras actividades comunitarias.",
+
+                form_title: "Apóyanos",
+                form_desc: "Ya sea que quieras ser voluntario en nuestros eventos, patrocinar nuestra misión o compartir tu propia historia, este movimiento es construido por la gente.",
+                form_fname: "Nombre *",
+                form_lname: "Apellido *",
+                form_email: "Correo Electrónico *",
+                form_phone: "Número de Teléfono",
+                form_role: "¿Cómo quieres ayudar? *",
+                form_opt_default: "Selecciona una opción",
+                form_opt_1: "Colecta de Juguetes (Toy Drive)",
+                form_opt_2: "Apoyo y Mentoría Juvenil",
+                form_opt_3: "Voluntario General en Eventos",
+                form_opt_4: "Compartir mi historia / Necesito ayuda",
+                form_msg: "Tu Mensaje (Opcional)",
+                form_btn: "Enviar Información",
+                form_note: "* Para pruebas rápidas: Estos datos pueden vincularse directamente a un Google Form.",
+                
+                qa_title: "Acción Rápida",
+                qa_toy: "Colecta de Juguetes",
+                qa_mentor: "Apoyo Juvenil",
+
+                modal_title: "Bienvenido al Movimiento",
+                modal_btn: "Cerrar",
+                
+                footer_slogan: "Construido por la gente, para la gente.",
+                footer_privacy: "Política de Privacidad",
+                footer_terms: "Términos de Servicio"
+            },
+            en: {
+                signup_pending: "Volunteer registration is being prepared. Please check back soon. No information is being collected on this page yet.",
+                nav_story: "Our Story",
+                nav_education: "Education",
+                nav_resources: "Resources",
+                nav_join: "Join the Movement",
+                
+                hero_title: `From our history, <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow to-orange-500">a movement is born.</span>`,
+                hero_quote: `"I was incarcerated from the age of 17 to 20. But my story didn't end there. It was the beginning of something bigger."`,
+                hero_author: "— Bryan’s story",
+                hero_cta: "Hear the Story",
+                
+                story_title: "The Journey",
+                story_subtitle: "What started with one person's experience became a mission to create opportunities, connections, and change.",
+                story_1_date: "Ages 17 to 20",
+                story_1_title: "Losing Youth to the System",
+                story_1_desc: "Incarcerated during the most formative years of life. This wasn't just a loss of time; it was a firsthand look into the devastating reality of mass incarceration and how it systematically targets minority and immigrant communities.",
+                story_2_date: "The Return",
+                story_2_title: "The Spark of Community",
+                story_2_desc: "Stepping out at age 20, the motivation wasn't just survival—it was transformation. Bryan began organizing local events, pulling people together, and creating safe spaces to heal and discuss the realities no one wanted to talk about.",
+                story_3_date: "Today",
+                story_3_title: "En el Nombre del Pueblo",
+                story_3_desc: "We are building a community initiative to educate about mass incarceration and explore ways to support immigrants and young people.",
+                
+                edu_title: `The Human Cost of <span class="text-brand-red">Incarceration</span>`,
+                edu_desc: "We don't just talk about the statistics; we show the human faces behind them. From El Salvador to the US, mass incarceration tears families apart. We use education as our greatest weapon for change.",
+                edu_point1_title: "Families & Communities",
+                edu_point1_desc: "Connecting individual imprisonment to broader community consequences.",
+                edu_point2_title: "Rehabilitation vs. Punishment",
+                edu_point2_desc: "Introducing hard questions about the purpose of the justice system.",
+                vid_tag: "Featured Clip",
+                vid_title: "Watch: Humanity Behind the Walls",
+
+                res_title: "Support & Action",
+                res_desc: "We exist to help our immigrant community build solid foundations through direct resources, robust connections, and tangible opportunities.",
+                res_1_title: "Immigrant Support",
+                res_1_desc: "Navigating a new country or a broken system is tough. We hope to help connect people with reliable resources and community opportunities.",
+                res_2_title: "Employment & Growth",
+                res_2_desc: "A second chance means nothing without opportunity. We aim to collaborate with people and organizations to expand opportunities for work and learning.",
+                res_3_title: "Community & Alumni",
+                res_3_desc: "You are not alone. Learn about the initiative and ways to contribute to future community activities.",
+
+                form_title: "Stand With Us",
+                form_desc: "Whether you want to volunteer at our events, sponsor our mission, or share your own story, this movement is built by the people.",
+                form_fname: "First Name *",
+                form_lname: "Last Name *",
+                form_email: "Email Address *",
+                form_phone: "Phone Number",
+                form_role: "How do you want to help? *",
+                form_opt_default: "Select an option",
+                form_opt_1: "Toy Drive Contribution",
+                form_opt_2: "Youth Mentorship & Support",
+                form_opt_3: "General Event Volunteer",
+                form_opt_4: "Share My Story / Needs Help",
+                form_msg: "Your Message (Optional)",
+                form_btn: "Submit Information",
+                form_note: "* For rapid testing: This data can be linked directly to a Google Form.",
+                
+                qa_title: "Quick Action",
+                qa_toy: "Join the Toy Drive",
+                qa_mentor: "Support Youth",
+
+                modal_title: "Welcome to the Movement",
+                modal_btn: "Close",
+                
+                footer_slogan: "Built by the people, for the people.",
+                footer_privacy: "Privacy Policy",
+                footer_terms: "Terms of Service"
+            }
+        };
+
+        // Current Language State
+        let currentLang = 'es';
+
+        // Function to switch language
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            
+            // Update Active Buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(`btn-${lang}-desktop`).classList.add('active');
+            document.getElementById(`btn-${lang}-mobile`).classList.add('active');
+
+            // Translate textContent elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            // Translate innerHTML elements (for tags inside text like spans)
+            document.querySelectorAll('[data-i18n-html]').forEach(el => {
+                const key = el.getAttribute('data-i18n-html');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Update Placeholder for textarea
+            const msgArea = document.getElementById('message');
+            if(msgArea) {
+                msgArea.placeholder = lang === 'es' ? "Cuéntanos cómo te conectas con el movimiento..." : "Tell us how you connect with the movement...";
+            }
+        }
+
+
+        // Boilerplate / UI Logic
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+
+        mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        mobileMenuLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) navbar.classList.add('shadow-lg');
+            else navbar.classList.remove('shadow-lg');
+        });
+
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+        const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, revealOptions);
+        revealElements.forEach(el => revealOnScroll.observe(el));
+
+        // Quick Action Floating Button Logic
+        const qaBtn = document.getElementById('quick-action-btn');
+        const qaMenu = document.getElementById('quick-action-menu');
+
+        qaBtn.addEventListener('click', () => {
+            qaMenu.classList.toggle('hidden');
+            qaBtn.classList.remove('animate-bounce'); // Stop bouncing once discovered
+        });
+
+        // Close menu if clicked outside
+        document.addEventListener('click', (e) => {
+            if (!qaBtn.contains(e.target) && !qaMenu.contains(e.target)) {
+                qaMenu.classList.add('hidden');
+            }
+        });
+
+        // Scroll to form and pre-select option
+        window.scrollToForm = function(optionValue) {
+            qaMenu.classList.add('hidden');
+            const formSection = document.getElementById('join');
+            const selectElement = document.getElementById('role-select');
+            
+            formSection.scrollIntoView({ behavior: 'smooth' });
+            
+            // Wait for scroll, then highlight the selection
+            setTimeout(() => {
+                selectElement.value = optionValue;
+                selectElement.focus();
+                // Add a brief flash effect to draw attention
+                selectElement.classList.add('ring-2', 'ring-brand-yellow', 'bg-brand-black');
+                setTimeout(() => {
+                    selectElement.classList.remove('ring-2', 'ring-brand-yellow', 'bg-brand-black');
+                }, 1500);
+            }, 800);
+        };
+
+        // Form Logic
+        const form = document.getElementById('movement-form');
+        const modal = document.getElementById('success-modal');
+        const modalBackdrop = document.getElementById('modal-backdrop');
+        const modalContent = document.getElementById('modal-content');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const modalMessage = document.getElementById('modal-message');
+
+        function openModal(name) {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => {
+                modalBackdrop.classList.remove('opacity-0');
+                modalBackdrop.classList.add('opacity-100');
+                modalContent.classList.remove('opacity-0', 'scale-95');
+                modalContent.classList.add('opacity-100', 'scale-100');
+            }, 10);
+
+            const msgEs = `Gracias, ${name}. Hemos recibido tu información y nos pondremos en contacto pronto para conectarte con nuestra comunidad.`;
+            const msgEn = `Thank you, ${name}. We have received your information and will be in contact shortly to connect you with our community.`;
+            modalMessage.textContent = currentLang === 'es' ? msgEs : msgEn;
+        }
+
+        function closeModal() {
+            modalBackdrop.classList.remove('opacity-100');
+            modalBackdrop.classList.add('opacity-0');
+            modalContent.classList.remove('opacity-100', 'scale-100');
+            modalContent.classList.add('opacity-0', 'scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 300);
+        }
+
+        closeModalBtn.addEventListener('click', closeModal);
+        modalBackdrop.addEventListener('click', closeModal);
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const firstName = document.getElementById('firstName').value;
+            alert(currentLang === "es" ? "Las inscripciones todavía no están disponibles." : "Signups are not available yet.");
+            // Do not claim to have collected data before a real form backend is connected.
+            document.getElementById('role-select').selectedIndex = 0;
+        });
+
+        // Initialize language on load (Default is Spanish as set in the HTML manually)
+        // Calling this ensures placeholders and button states are correct.
+        setLanguage('es');
+
+    </script>
+</body>
+</html>
