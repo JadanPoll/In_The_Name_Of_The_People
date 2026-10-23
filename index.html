@@ -277,9 +277,16 @@
                     </ul>
                 </div>
 
-                <!-- Video Iframe Integration -->
-                <div class="relative group reveal-right w-full aspect-video shadow-[0_0_30px_rgba(225,29,72,0.3)]">
-                    <iframe class="absolute inset-0 w-full h-full border border-slate-700 rounded-sm" src="https://www.youtube.com/embed/cOpKWxcr3WE?start=1440" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <!-- Short excerpt based on the timestamp supplied by the team; not yet editorially verified. -->
+                <div class="reveal-right w-full">
+                    <div class="relative w-full aspect-video shadow-[0_0_30px_rgba(225,29,72,0.3)]">
+                        <iframe id="education-video" class="absolute inset-0 w-full h-full border border-slate-700 rounded-sm" src="https://www.youtube-nocookie.com/embed/cOpKWxcr3WE?start=1444&end=1504" title="YouTube excerpt at 24:04" loading="lazy" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <p class="mt-4 text-slate-300 text-sm" data-i18n="clip_note">Preview excerpt: 24:04–25:04. More clips will be selected after reviewing the recording.</p>
+                    <div class="flex flex-wrap gap-3 mt-4">
+                        <button type="button" id="education-short-btn" class="bg-brand-yellow text-brand-black px-4 py-3 font-bold" data-i18n="clip_short">Play 1-minute excerpt</button>
+                        <button type="button" id="education-full-btn" class="bg-slate-700 text-white px-4 py-3 font-bold" data-i18n="clip_full">Watch full video</button>
+                    </div>
                 </div>
 
             </div>
@@ -469,6 +476,9 @@
                 community_video_link: "Ver en YouTube",
                 first_event_link: "Ver el video en Instagram",
                 first_event_fullscreen: "Ver en pantalla completa",
+                clip_note: "Fragmento de prueba: 24:04–25:04. Seleccionaremos más clips después de revisar el video.",
+                clip_short: "Ver un minuto",
+                clip_full: "Ver el video completo",
                 nav_story: "Nuestra Historia",
                 nav_education: "Educación",
                 nav_resources: "Recursos",
@@ -543,6 +553,9 @@
                 community_video_link: "Watch on YouTube",
                 first_event_link: "Watch on Instagram",
                 first_event_fullscreen: "Watch fullscreen",
+                clip_note: "Preview excerpt: 24:04–25:04. More clips will be selected after reviewing the recording.",
+                clip_short: "Play 1-minute excerpt",
+                clip_full: "Watch full video",
                 nav_story: "Our Story",
                 nav_education: "Education",
                 nav_resources: "Resources",
@@ -782,6 +795,15 @@
         instagramClose.addEventListener('click', closeInstagramFullscreen);
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Escape' && !instagramOverlay.classList.contains('hidden')) closeInstagramFullscreen();
+        });
+
+        // YouTube embeds reference time boundaries; no video files are hosted here.
+        const eduVideo = document.getElementById('education-video');
+        document.getElementById('education-short-btn').addEventListener('click', () => {
+            eduVideo.src = 'https://www.youtube-nocookie.com/embed/cOpKWxcr3WE?start=1444&end=1504&autoplay=1';
+        });
+        document.getElementById('education-full-btn').addEventListener('click', () => {
+            window.open('https://www.youtube.com/watch?v=cOpKWxcr3WE', '_blank', 'noopener,noreferrer');
         });
 
         // Initialize language on load (Default is Spanish as set in the HTML manually)
