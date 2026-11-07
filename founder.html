@@ -6,60 +6,166 @@
 <meta name="description" content="Founder navigation shortcuts for En el Nombre del Pueblo.">
 <title>Founder view | En el Nombre del Pueblo</title>
 <style>
-:root{font-family:Inter,system-ui,-apple-system,sans-serif;color-scheme:dark;background:#0f172a;color:#e2e8f0}
-*{box-sizing:border-box}body{margin:0;line-height:1.5}a{color:#fbbf24}a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #fbbf24;outline-offset:3px}
-header{background:#172134;border-bottom:1px solid #364255;padding:1rem max(1rem,calc((100vw - 1080px)/2));display:flex;gap:1.25rem;justify-content:space-between;align-items:center;flex-wrap:wrap}
-h1,h2,h3{line-height:1.2}h1{font-size:clamp(1.8rem,4vw,3rem);letter-spacing:-.03em;margin:.25rem 0}h2{font-size:1.3rem;margin:.1rem 0 .8rem}
-.brand{text-decoration:none;font-weight:800;color:white}.brand span{color:#fbbf24}
-main{max-width:1080px;margin:0 auto;padding:2rem 1rem 5rem}
-.lead{color:#94a3b8;font-size:1rem;max-width:720px}.eyebrow{font-size:.75rem;text-transform:uppercase;letter-spacing:.13em;color:#fbbf24;font-weight:800}
-.panel{background:#1e293b;border:1px solid #354253;padding:1.15rem 1.3rem;margin:1rem 0;border-radius:10px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:1rem;margin:1rem 0}
-.grid .panel{margin:0}.status{font-size:.8rem;display:inline-block;color:#cbd5e1;border:1px solid #64748b;border-radius:20px;padding:.1rem .6rem}
-ul{padding-left:1.25rem}li{margin:.7rem 0}li small{color:#94a3b8;display:block}
-.kicker{font-size:.85rem;color:#94a3b8}input{font:inherit;width:100%;max-width:350px;padding:.7rem .8rem;color:white;background:#0f172a;border:1px solid #64748b;border-radius:6px}
-button{cursor:pointer;font:inherit;font-weight:700;padding:.7rem 1rem;border:none;border-radius:6px;background:#fbbf24;color:#111827}
-button.secondary{background:#263344;color:#fbbf24;border:1px solid #64748b}
-.actions{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}.actions a{padding:.6rem .8rem;border:1px solid #64748b;border-radius:5px;text-decoration:none;font-weight:600}
-.actions a:hover{background:#354253}.muted{color:#94a3b8}.security{font-size:.86rem;color:#cbd5e1;margin-top:.7rem}.hidden{display:none!important}
-#unlock-msg{min-height:1.5rem;color:#fca5a5}
-footer{border-top:1px solid #334155;margin:2rem 0;color:#94a3b8;padding-top:1.2rem}
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Patrick+Hand&display=swap');
+:root{
+  color-scheme:light;
+  --ink:#242323;--muted:#5d5b55;--paper:#fbf8ed;--surface:#fffdf7;
+  --marker:#ffe66d;--coral:#fa8a74;--mint:#cdeed9;--blue:#d9eafa;--edge:#3d3b34;
+  font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(--paper)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;line-height:1.55;min-height:100vh;
+  background-image:linear-gradient(rgba(90,130,164,.07) 1px, transparent 1px);
+  background-size:100% 31px;
+}
+a{color:#17486c;text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #184d76;outline-offset:4px}
+h1,h2,h3{font-family:'Patrick Hand','Comic Sans MS',cursive;line-height:1.08;letter-spacing:.015em}
+h1{font-size:clamp(2.8rem,7.2vw,5.7rem);margin:.2rem 0 .6rem;font-weight:400}
+h2{font-size:clamp(1.7rem,3vw,2.3rem);margin:.1rem 0 .65rem;font-weight:400}
+h3{font-size:1.5rem;font-weight:400;margin:.5rem 0 .7rem}
+header{
+  padding:1rem max(1rem,calc((100vw - 1120px)/2));
+  display:flex;gap:1.1rem;justify-content:space-between;align-items:center;flex-wrap:wrap;
+  background:#fffdf7;border-bottom:2px solid var(--edge);
+  position:relative;z-index:1
+}
+.brand{font-weight:800;color:var(--ink);text-decoration:none;letter-spacing:-.03em;font-size:.95rem}
+.brand span{background:var(--marker);padding:0 .16em;box-decoration-break:clone}
+main{max-width:1100px;margin:auto;padding:2.2rem 1rem 3.3rem}
+.hero{position:relative;padding:.6rem 0 1.25rem;margin-bottom:.1rem}
+.hero h1{max-width:800px}
+.scribble-underline{position:relative;display:inline-block;z-index:0;white-space:nowrap}
+.scribble-underline::after{
+  content:"";position:absolute;left:-2%;bottom:.07em;width:105%;height:.20em;
+  background:var(--marker);transform:rotate(-1.6deg);z-index:-1;border-radius:70% 12% 45% 10%
+}
+.hero-scribble{position:absolute;right:1%;top:7%;width:min(20vw,180px);height:auto;transform:rotate(-9deg);pointer-events:none}
+.eyebrow{font-family:'Patrick Hand',cursive;font-size:1.32rem;letter-spacing:.035em;color:#9b3e31;margin:0;font-weight:400}
+.lead{color:var(--muted);font-size:1rem;max-width:670px;line-height:1.65;margin:.65rem 0}
+.panel{
+  position:relative;background:var(--surface);border:2px solid var(--edge);
+  padding:1.25rem 1.4rem;margin:1.15rem 0;
+  border-radius:3px 11px 5px 8px;box-shadow:5px 6px 0 rgba(37,35,32,.11)
+}
+.panel::before{content:"";position:absolute;top:-11px;left:27px;width:55px;height:19px;
+  background:rgba(249,224,151,.73);transform:rotate(-7deg);box-shadow:0 1px 1px rgba(0,0,0,.06);pointer-events:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1.15rem;margin:1.3rem 0}
+.grid .panel{margin:0}
+#dashboard>.grid>.panel:nth-child(1){background:#fff2ae;transform:rotate(-.6deg)}
+#dashboard>.grid>.panel:nth-child(2){background:#dceff8;transform:rotate(.55deg)}
+#dashboard>.grid>.panel:nth-child(2)::before{left:auto;right:18px;background:#f7d6d3;transform:rotate(6deg)}
+#dashboard>.panel:nth-of-type(2){background:#fdfdf6}
+.status{
+  font-family:'Patrick Hand',cursive;font-size:1.17rem;display:inline-block;padding:.12rem .7rem;
+  border:2px dashed #547659;transform:rotate(-2deg);background:#e6f4e3;border-radius:4px;color:#23572c
+}
+ul{padding-left:1.3rem}li{margin:.75rem 0}
+.kicker{color:var(--muted);font-size:.85rem}
+input{font:inherit;width:100%;max-width:270px;padding:.75rem .9rem;color:var(--ink);
+  background:#fffef8;border:2px solid var(--edge);border-radius:4px;box-shadow:3px 3px 0 #d4ded1}
+button{cursor:pointer;font:800 .94rem 'DM Sans',system-ui,sans-serif;padding:.78rem 1rem;
+  border:2px solid var(--edge);border-radius:5px;background:var(--marker);color:var(--ink);
+  box-shadow:3px 3px 0 var(--edge);transition:transform .15s ease,box-shadow .15s ease}
+button:hover{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--edge)}
+button.secondary{background:#dcebf3;color:#1d3646}
+.actions{display:flex;gap:.65rem;flex-wrap:wrap;align-items:center}
+.actions a{
+  padding:.53rem .77rem;border:1.8px solid var(--edge);border-radius:6px;
+  text-decoration:none;font-weight:700;font-size:.88rem;
+  background:#fffefa;box-shadow:2px 3px 0 rgba(0,0,0,.12);
+  transition:transform .15s ease
+}
+.actions a:hover{background:var(--marker);transform:rotate(-1deg)}
+#dashboard>.panel>.grid{margin-top:.4rem;gap:1.8rem}
+#dashboard>.panel>.grid .actions{align-items:flex-start}
+#dashboard>.panel>.grid .actions a{font-size:.85rem}
+#dashboard>.panel>.grid>div:nth-child(1) h3::before{content:"✦ ";color:#ec765c}
+#dashboard>.panel>.grid>div:nth-child(2) h3::before{content:"➜ ";color:#448da1}
+#dashboard>.panel>.grid>div:nth-child(3) h3::before{content:"✧ ";color:#e7a224}
+#dashboard>.panel>.grid>div:nth-child(4) h3::before{content:"↗ ";color:#50845d}
+#next-list{list-style:none;counter-reset:todo;margin:1.2rem 0 1.35rem;padding:0}
+#next-list li{
+  counter-increment:todo;display:grid;grid-template-columns:40px 1fr;
+  align-items:start;gap:.8rem;padding:.85rem .4rem;
+  border-bottom:1px dashed #bcb6a9;margin:0
+}
+#next-list li:before{
+  content:counter(todo,decimal-leading-zero);font-family:'Patrick Hand',cursive;
+  font-size:1.4rem;color:#8c3d34;text-align:center;
+  transform:rotate(-7deg);line-height:1.1;
+  border:2px solid #be6551;border-radius:50% 45% 51% 47%;
+  background:#fff1dd;padding:.13rem 0
+}
+#next-list li span{font-weight:600;line-height:1.5}
+#next-list li small{color:#77736c;display:block;font-size:.76rem;grid-column:2;margin-top:-.7rem}
+.security{
+  font-size:.84rem;color:#514c46;margin-top:1rem;padding:.7rem .85rem;background:#f9f3dd;
+  border-left:4px solid #d6a23e
+}
+.muted{color:var(--muted)}
+.hidden{display:none!important}
+#unlock-msg{min-height:1.5rem;color:#a52e2e}
+footer{border-top:2px dashed #aaa395;margin:2.4rem 0 0;color:var(--muted);padding-top:1.2rem;font-size:.89rem}
+.hand-note{font-family:'Patrick Hand',cursive;color:#a33f36;font-size:1.2rem;transform:rotate(-3deg);display:inline-block}
+.corner-star{font-size:1.5rem;color:#d56e5a}
+@media(max-width:720px){
+ main{padding:1.1rem .85rem 2.5rem}
+ header{padding:1rem}
+ .hero-scribble{right:-2px;top:0;width:78px;opacity:.8}
+ .hero h1{padding-right:2rem;font-size:clamp(2.7rem,11vw,4rem)}
+ .panel{padding:1rem 1rem;box-shadow:3px 4px 0 rgba(37,35,32,.1)}
+ #dashboard>.grid>.panel{transform:none}
+ #dashboard>.panel>.grid{gap:.5rem}
+ .actions{gap:.55rem}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}button,.actions a{transition:none}}
 </style>
 </head>
 <body>
 <header><a class="brand" href="./index.html">EN EL NOMBRE <span>DEL PUEBLO</span></a><div class="actions"><a href="./actions.html">Public actions</a><button type="button" class="secondary hidden" id="lock">Lock shortcut</button></div></header>
 <main>
-<p class="eyebrow">Founder view · one-page orientation</p>
-<h1>What needs to happen next?</h1>
-<p class="lead">A quick view of goals, next actions, and where to find the source. It is a navigation tool, not a second task database.</p>
+<div class="hero">
+  <p class="eyebrow">✳ the organizer's notebook / founder view</p>
+  <h1>What are we <span class="scribble-underline">making happen?</span></h1>
+  <p class="lead">The real things that matter this week, plus shortcuts to the work behind them. Less dashboard, more getting stuff done.</p>
+  <svg class="hero-scribble" aria-hidden="true" viewBox="0 0 190 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M21 20C49 11 86 23 102 44C114 60 111 76 92 81C75 85 64 70 74 62C93 46 137 75 142 107" stroke="#df7865" stroke-width="5" stroke-linecap="round"/>
+    <path d="M124 99L142 117L155 93" stroke="#df7865" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M38 110l7-17 10 15 15-13-3 22M19 138l9-5 4-14 9 15 15-4" stroke="#477f90" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div>
 <section id="entry" class="panel">
-<h2>Open founder shortcuts</h2>
-<p>Enter the shared navigation word to reveal links to the working documents.</p>
+<h2>Hey, organizer! <span class="corner-star" aria-hidden="true">✳</span></h2>
+<p>Got the shared word? Open the organizer's shortcuts below.</p>
 <form id="gate" class="actions" autocomplete="off">
 <label for="word" class="hidden">Navigation word</label>
 <input id="word" type="password" placeholder="Shared word" aria-label="Navigation word" required autocomplete="off">
 <button type="submit">Open view</button>
 </form>
 <p id="unlock-msg" aria-live="polite"></p>
-<p class="security">Convenience only: this is a publicly hosted static page, not an encrypted private workspace. GitHub/Google documents require their own permissions.</p>
+<p class="security">A friendly door, not a vault: this public page isn't encrypted. The linked private records still require GitHub / Google permissions.</p>
 </section>
 <section id="dashboard" class="hidden" aria-label="Founder overview">
 <div class="grid">
 <div class="panel">
-<p class="eyebrow">Current milestone</p><h2 id="milestone">First volunteer activity</h2><p id="phase" class="status">Planning</p><p class="kicker" id="snapshot-date"></p>
+<p class="eyebrow">✶ the big thing we're doing</p><h2 id="milestone">First volunteer activity</h2><p id="phase" class="status">Planning</p><p class="kicker" id="snapshot-date"></p>
 </div>
 <div class="panel">
-<p class="eyebrow">Reality check</p><p id="evidence">No confirmed event yet.</p>
+<p class="eyebrow">↘ what we know for sure</p><p id="evidence">No confirmed event yet.</p>
 <a href="actions.html#volunteer">Public activity status</a>
 </div>
 </div>
 <div class="panel">
-<div class="actions" style="justify-content:space-between"><h2 style="margin:0">Next actions</h2><a href="https://github.com/JadanPoll/Our_Volunteering_Organization/blob/main/Operations/Now.json" target="_blank" rel="noopener noreferrer">Open canonical task list</a></div>
+<div class="actions" style="justify-content:space-between"><h2 style="margin:0">This week's moves <span class="hand-note">(keep it real!)</span></h2><a href="https://github.com/JadanPoll/Our_Volunteering_Organization/blob/main/Operations/Now.json" target="_blank" rel="noopener noreferrer">Open canonical task list</a></div>
 <ol id="next-list"></ol>
-<p class="kicker">This is a dated, public-safe projection. The private GitHub file is the source of truth; changes made there do not automatically appear here.</p>
+<p class="kicker">Sticky-note snapshot, not a live database. The private task list is the source of truth.</p>
 </div>
 <div class="panel">
-<h2>Open the source for the question at hand</h2>
+<h2>Grab the right paper <span class="corner-star" aria-hidden="true">✎</span></h2>
 <div class="grid">
 <div><h3>Run the organization</h3><div class="actions">
 <a target="_blank" rel="noopener noreferrer" href="https://github.com/JadanPoll/Our_Volunteering_Organization/blob/main/Operations/Now.json">What next?</a>
@@ -82,10 +188,10 @@ footer{border-top:1px solid #334155;margin:2rem 0;color:#94a3b8;padding-top:1.2r
 <a target="_blank" rel="noopener noreferrer" href="https://github.com/JadanPoll/In_The_Name_Of_The_People">Website source</a>
 </div></div>
 </div>
-<p class="security">The links above may ask you to sign in, or may be unavailable unless you have explicit access. No private records are embedded or retrieved by this page.</p>
+<p class="security">Some links need sign-in. This page never downloads private records — only public-safe notes and shortcuts.</p>
 </div>
 </section>
-<footer>En el Nombre del Pueblo · <a href="index.html">Public website</a> · <a href="actions.html">Take action</a></footer>
+<footer><span class="hand-note">made to be used, not admired ↗</span> · En el Nombre del Pueblo · <a href="index.html">Public website</a> · <a href="actions.html">Take action</a></footer>
 </main>
 <script>
 'use strict';
