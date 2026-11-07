@@ -559,8 +559,10 @@
                 }
             });
 
-            for(const link of document.querySelectorAll('a[href^="actions.html"]')) {
-              const url=new URL(link.href);url.searchParams.set('lang',lang);link.href=url.href;
+            for(const link of document.querySelectorAll('a[href]')) {
+              const url=new URL(link.href);
+              if(url.origin!==location.origin||!url.pathname.endsWith('/actions.html'))continue;
+              url.searchParams.set('lang',lang);link.href=url.href;
             }
             const url=new URL(location.href);url.searchParams.set('lang',lang);
             history.replaceState(null,'',url.pathname+url.search+url.hash);
