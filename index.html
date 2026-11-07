@@ -174,6 +174,9 @@
                     <span data-i18n="hero_cta">Escucha la Historia</span>
                     <i class="fa-solid fa-arrow-down transform group-hover:translate-y-1 transition-transform"></i>
                 </a>
+                <a href="actions.html" class="bg-brand-yellow hover:bg-white text-brand-black px-8 py-4 font-bold text-lg uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-hand-holding-heart"></i><span data-i18n="hero_action">Participa hoy</span>
+                </a>
             </div>
         </div>
     </section>
@@ -306,6 +309,7 @@
                     <div class="text-brand-yellow text-5xl mb-6"><i class="fa-solid fa-hand-holding-hand"></i></div>
                     <h3 data-i18n="res_1_title" class="text-2xl font-display font-black text-white uppercase mb-4">Apoyo a Inmigrantes</h3>
                     <p data-i18n="res_1_desc" class="text-slate-400 mb-6">Navegar por un nuevo país o un sistema roto es difícil. Queremos conectar a las personas con recursos confiables y oportunidades comunitarias.</p>
+                    <a href="https://immigrants.sf.gov/" target="_blank" rel="noopener noreferrer" data-i18n="link_immigration" class="font-semibold text-brand-yellow underline">Ayuda legal de inmigración en SF</a>
                 </div>
 
                 <!-- Resource 2 -->
@@ -313,6 +317,7 @@
                     <div class="text-brand-red text-5xl mb-6"><i class="fa-solid fa-briefcase"></i></div>
                     <h3 data-i18n="res_2_title" class="text-2xl font-display font-black text-white uppercase mb-4">Empleo y Crecimiento</h3>
                     <p data-i18n="res_2_desc" class="text-slate-400 mb-6">Una segunda oportunidad no significa nada sin una oportunidad real. Buscamos colaborar con personas y organizaciones para abrir oportunidades de empleo y aprendizaje.</p>
+                    <a href="https://sfpl.org/locations/main-library/jobs-careers-center/jobs-and-careers-resources" target="_blank" rel="noopener noreferrer" data-i18n="link_jobs" class="font-semibold text-brand-yellow underline">Recursos de empleo (Biblioteca de SF)</a>
                 </div>
 
                 <!-- Resource 3 -->
@@ -320,6 +325,7 @@
                     <div class="text-white text-5xl mb-6"><i class="fa-solid fa-people-group"></i></div>
                     <h3 data-i18n="res_3_title" class="text-2xl font-display font-black text-white uppercase mb-4">Comunidad y Red</h3>
                     <p data-i18n="res_3_desc" class="text-slate-400 mb-6">No estás solo. Conoce la iniciativa y las formas de contribuir a futuras actividades comunitarias.</p>
+                    <a href="actions.html#volunteer" data-i18n="link_volunteer" class="font-semibold text-brand-yellow underline">Ver opciones de voluntariado</a>
                 </div>
 
             </div>
@@ -338,7 +344,8 @@
                     <p data-i18n="form_desc" class="text-slate-400 text-lg">Ya sea que quieras ser voluntario en nuestros eventos, patrocinar nuestra misión o compartir tu propia historia, este movimiento es construido por la gente.</p>
                 </div>
 
-                <p class="text-center text-brand-yellow mb-8" data-i18n="signup_pending">Volunteer registration is being prepared. Please check back soon. No information is being collected on this page yet.</p>
+                <p class="text-center text-brand-yellow mb-5" data-i18n="signup_pending">No estamos recibiendo inscripciones en esta página.</p>
+                <p class="text-center mb-8"><a href="actions.html" class="inline-block bg-brand-yellow hover:bg-white text-brand-black px-6 py-4 font-bold uppercase" data-i18n="action_link">Ver actividades y recursos útiles</a></p>
                 <form id="movement-form" class="space-y-6" hidden style="display:none">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
@@ -449,17 +456,14 @@
                 
                 <div class="flex space-x-6">
                     <a href="https://www.instagram.com/nombre__del__pueblo/" class="text-slate-500 hover:text-brand-yellow transition-colors text-xl"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="text-slate-500 hover:text-brand-yellow transition-colors text-xl"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" class="text-slate-500 hover:text-brand-yellow transition-colors text-xl"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="#" class="text-slate-500 hover:text-brand-yellow transition-colors text-xl"><i class="fa-brands fa-youtube"></i></a>
+                    <!-- Other social profiles are omitted until verified; no dead links. -->
                 </div>
             </div>
             
             <div class="border-t border-slate-800 mt-8 pt-8 text-center md:text-left flex flex-col md:flex-row justify-between text-sm">
                 <p>&copy; <span id="year"></span> En el Nombre del Pueblo. <span data-i18n="footer_slogan">Construido por la gente, para la gente.</span></p>
                 <div class="mt-4 md:mt-0 space-x-4">
-                    <a href="#join" data-i18n="footer_privacy" class="hover:text-white transition-colors">Política de Privacidad</a>
-                    <a href="#join" data-i18n="footer_terms" class="hover:text-white transition-colors">Términos de Servicio</a>
+                    <a href="actions.html" data-i18n="action_link" class="hover:text-white transition-colors">Ver actividades y recursos útiles</a>
                 </div>
             </div>
         </div>
@@ -470,7 +474,8 @@
         // Localization Data Dictionary
         const translations = {
             es: {
-                signup_pending: "Estamos preparando el registro de voluntarios. Regresa pronto. Por ahora no recopilamos datos en esta página.",
+                signup_pending: "No estamos recibiendo inscripciones en esta página. Usa las opciones reales a continuación.",
+                action_link: "Ver actividades y recursos útiles",
                 community_video_title: "Más historias de nuestra comunidad",
                 community_video_desc: "Mira este video y conoce más perspectivas. También puedes abrirlo directamente en YouTube.",
                 community_video_link: "Ver en YouTube",
@@ -482,12 +487,16 @@
                 nav_story: "Nuestra Historia",
                 nav_education: "Educación",
                 nav_resources: "Recursos",
+                link_immigration: "Ayuda legal de inmigración en SF",
+                link_jobs: "Recursos de empleo (Biblioteca de SF)",
+                link_volunteer: "Ver opciones de voluntariado",
                 nav_join: "Únete al Movimiento",
                 
                 hero_title: `De nuestra historia, <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow to-orange-500">nace un movimiento.</span>`,
                 hero_quote: `De los 17 a los 20 años estuve encarcelado. Mi historia continúa en la comunidad.`,
                 hero_author: "— Bryan, Fundador",
                 hero_cta: "Escucha la Historia",
+                hero_action: "Participa hoy",
                 
                 story_title: "La Trayectoria",
                 story_subtitle: "Lo que comenzó con la experiencia de una persona se convirtió en una misión para crear oportunidades, conexiones y cambio.",
@@ -547,7 +556,8 @@
                 footer_terms: "Términos de Servicio"
             },
             en: {
-                signup_pending: "Volunteer registration is being prepared. Please check back soon. No information is being collected on this page yet.",
+                signup_pending: "We are not accepting signups through this page. Use the real options below.",
+                action_link: "See activities and useful resources",
                 community_video_title: "More Stories from Our Community",
                 community_video_desc: "Watch this video to explore more perspectives. You can also open it directly on YouTube.",
                 community_video_link: "Watch on YouTube",
@@ -559,12 +569,16 @@
                 nav_story: "Our Story",
                 nav_education: "Education",
                 nav_resources: "Resources",
+                link_immigration: "Find SF immigration legal help",
+                link_jobs: "Job resources (SF Public Library)",
+                link_volunteer: "Find volunteer opportunities",
                 nav_join: "Join the Movement",
                 
                 hero_title: `From our history, <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow to-orange-500">a movement is born.</span>`,
                 hero_quote: `"I was incarcerated from the age of 17 to 20. But my story didn't end there. It was the beginning of something bigger."`,
                 hero_author: "— Bryan’s story",
                 hero_cta: "Hear the Story",
+                hero_action: "Take action today",
                 
                 story_title: "The Journey",
                 story_subtitle: "What started with one person's experience became a mission to create opportunities, connections, and change.",
@@ -708,24 +722,10 @@
             }
         });
 
-        // Scroll to form and pre-select option
+        // Route quick actions to functioning options, never to the hidden signup form.
         window.scrollToForm = function(optionValue) {
             qaMenu.classList.add('hidden');
-            const formSection = document.getElementById('join');
-            const selectElement = document.getElementById('role-select');
-            
-            formSection.scrollIntoView({ behavior: 'smooth' });
-            
-            // Wait for scroll, then highlight the selection
-            setTimeout(() => {
-                selectElement.value = optionValue;
-                selectElement.focus();
-                // Add a brief flash effect to draw attention
-                selectElement.classList.add('ring-2', 'ring-brand-yellow', 'bg-brand-black');
-                setTimeout(() => {
-                    selectElement.classList.remove('ring-2', 'ring-brand-yellow', 'bg-brand-black');
-                }, 1500);
-            }, 800);
+            window.location.href = optionValue === 'mentor' ? 'actions.html#support' : 'actions.html#volunteer';
         };
 
         // Form Logic
