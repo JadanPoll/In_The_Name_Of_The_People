@@ -15,3 +15,5 @@ Our public website for community stories, volunteer opportunities, and practical
 - The team's working records live in [Our Volunteering Organization](https://github.com/JadanPoll/Our_Volunteering_Organization).
 
 The team notebook's shared word is just a shortcut. Private documents still require their own sign-in.
+
+[Previous visual design](https://github.com/JadanPoll/In_The_Name_Of_The_People/tree/archive/pre-community-notebook-2026-11) is saved if we ever want to compare or reuse it.
