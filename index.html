@@ -81,7 +81,7 @@
                         <button onclick="setLanguage('en')" id="btn-en-mobile" class="lang-btn hover:text-white">EN</button>
                     </div>
 
-                    <button id="mobile-menu-btn" class="text-white hover:text-brand-yellow focus:outline-none p-2">
+                    <button id="mobile-menu-btn" type="button" aria-label="Menú / Menu" aria-controls="mobile-menu" aria-expanded="false" class="text-white hover:text-brand-yellow focus:outline-none p-2">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
@@ -300,109 +300,27 @@
         </div>
     </section>
 
-    <!-- Join The Movement Form -->
-    <section id="join" class="py-24 relative bg-brand-dark overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-red via-brand-yellow to-brand-red"></div>
-        <div class="absolute -top-40 -right-40 w-96 h-96 bg-brand-red/10 rounded-full blur-3xl"></div>
-        
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 reveal">
-            <div class="bg-brand-black border border-white/10 p-8 md:p-12 shadow-2xl">
-                <div class="text-center mb-10">
-                    <h2 data-i18n="form_title" class="font-display text-4xl md:text-5xl font-black text-white uppercase tracking-tighter mb-4">Apóyanos</h2>
-                    <p data-i18n="form_desc" class="text-slate-400 text-lg">Ya sea que quieras ser voluntario en nuestros eventos, patrocinar nuestra misión o compartir tu propia historia, este movimiento es construido por la gente.</p>
-                </div>
-
-                <p class="text-center text-brand-yellow mb-5" data-i18n="signup_pending">No estamos recibiendo inscripciones en esta página.</p>
-                <p class="text-center mb-8"><a href="actions.html" class="inline-block bg-brand-yellow hover:bg-white text-brand-black px-6 py-4 font-bold uppercase" data-i18n="action_link">Ver actividades y recursos útiles</a></p>
-                <form id="movement-form" class="space-y-6" hidden style="display:none">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label data-i18n="form_fname" for="firstName" class="block text-sm font-bold text-slate-300 uppercase tracking-wide mb-2">Nombre *</label>
-                            <input type="text" id="firstName" required class="w-full px-4 py-3 bg-brand-dark border border-slate-700 text-white focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow outline-none transition-colors rounded-none">
-                        </div>
-                        <div>
-                            <label data-i18n="form_lname" for="lastName" class="block text-sm font-bold text-slate-300 uppercase tracking-wide mb-2">Apellido *</label>
-                            <input type="text" id="lastName" required class="w-full px-4 py-3 bg-brand-dark border border-slate-700 text-white focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow outline-none transition-colors rounded-none">
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label data-i18n="form_email" for="email" class="block text-sm font-bold text-slate-300 uppercase tracking-wide mb-2">Correo Electrónico *</label>
-                            <input type="email" id="email" required class="w-full px-4 py-3 bg-brand-dark border border-slate-700 text-white focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow outline-none transition-colors rounded-none">
-                        </div>
-                        <div>
-                            <label data-i18n="form_phone" for="phone" class="block text-sm font-bold text-slate-300 uppercase tracking-wide mb-2">Número de Teléfono</label>
-                            <input type="tel" id="phone" class="w-full px-4 py-3 bg-brand-dark border border-slate-700 text-white focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow outline-none transition-colors rounded-none">
-                        </div>
-                    </div>
-
-                    <div>
-                        <label data-i18n="form_role" for="role-select" class="block text-sm font-bold text-slate-300 uppercase tracking-wide mb-2">¿Cómo quieres ayudar? *</label>
-                        <div class="relative">
-                            <select id="role-select" required class="w-full px-4 py-3 bg-brand-dark border border-slate-700 text-white focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow outline-none transition-colors rounded-none appearance-none cursor-pointer">
-                                <option data-i18n="form_opt_default" value="" disabled selected>Selecciona una opción</option>
-                                <option data-i18n="form_opt_1" value="toy_drive">Colecta de Juguetes (Toy Drive)</option>
-                                <option data-i18n="form_opt_2" value="mentor">Apoyo y Mentoría Juvenil</option>
-                                <option data-i18n="form_opt_3" value="volunteer">Voluntario General en Eventos</option>
-                                <option data-i18n="form_opt_4" value="story">Compartir mi historia / Necesito ayuda</option>
-                            </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-brand-yellow">
-                                <i class="fa-solid fa-chevron-down text-sm"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label data-i18n="form_msg" for="message" class="block text-sm font-bold text-slate-300 uppercase tracking-wide mb-2">Tu Mensaje (Opcional)</label>
-                        <textarea id="message" rows="4" class="w-full px-4 py-3 bg-brand-dark border border-slate-700 text-white focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow outline-none transition-colors rounded-none resize-none" placeholder="..."></textarea>
-                    </div>
-
-                    <button type="submit" class="w-full bg-brand-yellow hover:bg-white text-brand-black font-black uppercase tracking-widest text-lg py-5 transition-all duration-300 hover:shadow-[0_0_20px_rgba(251,191,36,0.4)] flex justify-center items-center gap-3">
-                        <span data-i18n="form_btn">Enviar Información</span>
-                        <i class="fa-solid fa-paper-plane"></i>
-                    </button>
-                    <p data-i18n="form_note" class="text-center text-xs text-slate-500 mt-4">* Para pruebas rápidas: Estos datos pueden vincularse directamente a un Google Form.</p>
-                </form>
-            </div>
+    <!-- Getting involved -->
+    <section id="join" class="notebook-join py-24 relative">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="join-sheet">
+          <div class="join-copy">
+            <p class="scribble-label" data-i18n="join_label">✳ tu comunidad te necesita</p>
+            <h2 data-i18n="form_title" class="font-display text-4xl md:text-5xl font-black mb-4">Apóyanos</h2>
+            <p data-i18n="form_desc" class="text-lg mb-6">Ya sea que quieras ser voluntario en nuestros eventos, patrocinar nuestra misión o compartir tu propia historia, este movimiento es construido por la gente.</p>
+            <p class="join-status" data-i18n="signup_pending">No estamos recibiendo inscripciones en esta página. Usa las opciones reales a continuación.</p>
+          </div>
+          <div class="join-actions">
+            <span class="scribble-arrow" aria-hidden="true">↙</span>
+            <a href="actions.html#volunteer" class="notebook-button marker-button" data-i18n="join_volunteer">Ver cómo participar ↗</a>
+            <a href="actions.html#support" class="notebook-button outline-button" data-i18n="join_resources">Encontrar apoyo ↗</a>
+            <a href="https://www.instagram.com/nombre__del__pueblo/" target="_blank" rel="noopener noreferrer" class="notebook-button link-button" data-i18n="join_contact">Hablar por Instagram ↗</a>
+            <p class="join-note" data-i18n="join_note">La inscripción sigue en preparación; no recopilamos datos personales aquí.</p>
+          </div>
         </div>
+      </div>
     </section>
-
-    <!-- Quick Action Floating Button -->
-    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
-        <div id="quick-action-menu" class="hidden bg-brand-dark border border-slate-700 p-4 shadow-2xl mb-4 w-64 transform transition-all origin-bottom-right">
-            <h4 data-i18n="qa_title" class="text-white font-bold mb-3 uppercase tracking-wide border-b border-slate-700 pb-2">Acción Rápida</h4>
-            <div class="space-y-2">
-                <button onclick="scrollToForm('toy_drive')" class="w-full text-left p-3 bg-brand-black hover:bg-brand-red text-white transition-colors text-sm flex items-center gap-3 group">
-                    <i class="fa-solid fa-gift text-brand-yellow group-hover:text-white animate-pulse"></i> 
-                    <span data-i18n="qa_toy">Colecta de Juguetes</span>
-                </button>
-                <button onclick="scrollToForm('mentor')" class="w-full text-left p-3 bg-brand-black hover:bg-brand-red text-white transition-colors text-sm flex items-center gap-3 group">
-                    <i class="fa-solid fa-shield-halved text-brand-yellow group-hover:text-white"></i> 
-                    <span data-i18n="qa_mentor">Apoyo Juvenil</span>
-                </button>
-            </div>
-        </div>
-        <button id="quick-action-btn" class="w-14 h-14 bg-brand-red hover:bg-brand-yellow text-white hover:text-brand-black rounded-full shadow-[0_0_15px_rgba(225,29,72,0.5)] flex items-center justify-center text-2xl transition-all duration-300 animate-bounce">
-            <i class="fa-solid fa-bolt"></i>
-        </button>
-    </div>
-
-    <!-- Custom Modal for Success Message -->
-    <div id="success-modal" class="fixed inset-0 z-[100] hidden items-center justify-center">
-        <div class="absolute inset-0 bg-brand-black/80 backdrop-blur-md transition-opacity opacity-0" id="modal-backdrop"></div>
-        <div class="relative bg-brand-dark border border-slate-700 p-8 max-w-md w-full mx-4 shadow-2xl transform scale-95 opacity-0 transition-all duration-300" id="modal-content">
-            <div class="w-20 h-20 bg-brand-yellow rounded-full flex items-center justify-center mx-auto mb-6">
-                <i class="fa-solid fa-check text-4xl text-brand-black"></i>
-            </div>
-            <h3 data-i18n="modal_title" class="font-display text-3xl font-black text-center text-white uppercase tracking-tighter mb-4">Bienvenido al Movimiento</h3>
-            <p class="text-center text-slate-400 mb-8 text-lg" id="modal-message">Gracias. Hemos recibido tu información y nos pondremos en contacto contigo pronto.</p>
-            <button id="close-modal-btn" data-i18n="modal_btn" class="w-full bg-brand-red hover:bg-red-700 text-white font-bold uppercase tracking-widest py-4 transition-colors">
-                Cerrar
-            </button>
-        </div>
-    </div>
-
+    
     <!-- Instagram fullscreen overlay; Esc or close returns to story. -->
     <div id="instagram-fullscreen" class="fixed inset-0 z-[110] bg-black hidden flex-col" role="dialog" aria-modal="true" aria-label="Instagram video">
         <div class="flex justify-end p-2 bg-black">
@@ -460,6 +378,18 @@
                 link_jobs: "Recursos de empleo (Biblioteca de SF)",
                 link_volunteer: "Ver opciones de voluntariado",
                 nav_join: "Únete al Movimiento",
+                hero_kicker: "✳ de la comunidad, para la comunidad",
+                poster_caption: "hecho por la gente, para la gente ↗",
+                start_heading: "¿Por dónde empezamos? ↘",
+                start_volunteer: "Quiero ayudar",
+                start_support: "Busco apoyo",
+                start_story: "Conoce la historia",
+                poster_note: "Aquí empieza lo que sigue.",
+                join_label: "✳ tu comunidad te necesita",
+                join_volunteer: "Ver cómo participar ↗",
+                join_resources: "Encontrar apoyo ↗",
+                join_contact: "Hablar por Instagram ↗",
+                join_note: "La inscripción sigue en preparación; no recopilamos datos personales aquí.",
                 
                 hero_title: `De nuestra historia, <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow to-orange-500">nace un movimiento.</span>`,
                 hero_quote: `De los 17 a los 20 años estuve encarcelado. Mi historia continúa en la comunidad.`,
@@ -499,30 +429,8 @@
 
                 form_title: "Apóyanos",
                 form_desc: "Ya sea que quieras ser voluntario en nuestros eventos, patrocinar nuestra misión o compartir tu propia historia, este movimiento es construido por la gente.",
-                form_fname: "Nombre *",
-                form_lname: "Apellido *",
-                form_email: "Correo Electrónico *",
-                form_phone: "Número de Teléfono",
-                form_role: "¿Cómo quieres ayudar? *",
-                form_opt_default: "Selecciona una opción",
-                form_opt_1: "Colecta de Juguetes (Toy Drive)",
-                form_opt_2: "Apoyo y Mentoría Juvenil",
-                form_opt_3: "Voluntario General en Eventos",
-                form_opt_4: "Compartir mi historia / Necesito ayuda",
-                form_msg: "Tu Mensaje (Opcional)",
-                form_btn: "Enviar Información",
-                form_note: "* Para pruebas rápidas: Estos datos pueden vincularse directamente a un Google Form.",
-                
-                qa_title: "Acción Rápida",
-                qa_toy: "Colecta de Juguetes",
-                qa_mentor: "Apoyo Juvenil",
-
-                modal_title: "Bienvenido al Movimiento",
-                modal_btn: "Cerrar",
                 
                 footer_slogan: "Construido por la gente, para la gente.",
-                footer_privacy: "Política de Privacidad",
-                footer_terms: "Términos de Servicio"
             },
             en: {
                 signup_pending: "We are not accepting signups through this page. Use the real options below.",
@@ -542,6 +450,18 @@
                 link_jobs: "Job resources (SF Public Library)",
                 link_volunteer: "Find volunteer opportunities",
                 nav_join: "Join the Movement",
+                hero_kicker: "✳ by the community, for the community",
+                poster_caption: "built by the people, for the people ↗",
+                start_heading: "Where do we start? ↘",
+                start_volunteer: "I want to help",
+                start_support: "I need support",
+                start_story: "Hear the story",
+                poster_note: "What comes next starts here.",
+                join_label: "✳ your community needs you",
+                join_volunteer: "Find ways to help ↗",
+                join_resources: "Find support ↗",
+                join_contact: "Message us on Instagram ↗",
+                join_note: "Online signup is not available yet; no information is collected here.",
                 
                 hero_title: `From our history, <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow to-orange-500">a movement is born.</span>`,
                 hero_quote: `"I was incarcerated from the age of 17 to 20. But my story didn't end there. It was the beginning of something bigger."`,
@@ -581,30 +501,8 @@
 
                 form_title: "Stand With Us",
                 form_desc: "Whether you want to volunteer at our events, sponsor our mission, or share your own story, this movement is built by the people.",
-                form_fname: "First Name *",
-                form_lname: "Last Name *",
-                form_email: "Email Address *",
-                form_phone: "Phone Number",
-                form_role: "How do you want to help? *",
-                form_opt_default: "Select an option",
-                form_opt_1: "Toy Drive Contribution",
-                form_opt_2: "Youth Mentorship & Support",
-                form_opt_3: "General Event Volunteer",
-                form_opt_4: "Share My Story / Needs Help",
-                form_msg: "Your Message (Optional)",
-                form_btn: "Submit Information",
-                form_note: "* For rapid testing: This data can be linked directly to a Google Form.",
-                
-                qa_title: "Quick Action",
-                qa_toy: "Join the Toy Drive",
-                qa_mentor: "Support Youth",
-
-                modal_title: "Welcome to the Movement",
-                modal_btn: "Close",
                 
                 footer_slogan: "Built by the people, for the people.",
-                footer_privacy: "Privacy Policy",
-                footer_terms: "Terms of Service"
             }
         };
 
@@ -640,10 +538,7 @@
             });
 
             // Update Placeholder for textarea
-            const msgArea = document.getElementById('message');
-            if(msgArea) {
-                msgArea.placeholder = lang === 'es' ? "Cuéntanos cómo te conectas con el movimiento..." : "Tell us how you connect with the movement...";
-            }
+            // The website uses direct links instead of collecting form submissions.
         }
 
 
@@ -654,8 +549,14 @@
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileMenuLinks = mobileMenu.querySelectorAll('a');
 
-        mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-        mobileMenuLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+        mobileBtn.addEventListener('click', () => {
+            const open = !mobileMenu.classList.toggle('hidden');
+            mobileBtn.setAttribute('aria-expanded', String(open));
+        });
+        mobileMenuLinks.forEach(link => link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            mobileBtn.setAttribute('aria-expanded', 'false');
+        }));
 
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
@@ -675,74 +576,8 @@
         }, revealOptions);
         revealElements.forEach(el => revealOnScroll.observe(el));
 
-        // Quick Action Floating Button Logic
-        const qaBtn = document.getElementById('quick-action-btn');
-        const qaMenu = document.getElementById('quick-action-menu');
-
-        qaBtn.addEventListener('click', () => {
-            qaMenu.classList.toggle('hidden');
-            qaBtn.classList.remove('animate-bounce'); // Stop bouncing once discovered
-        });
-
-        // Close menu if clicked outside
-        document.addEventListener('click', (e) => {
-            if (!qaBtn.contains(e.target) && !qaMenu.contains(e.target)) {
-                qaMenu.classList.add('hidden');
-            }
-        });
-
-        // Route quick actions to functioning options, never to the hidden signup form.
-        window.scrollToForm = function(optionValue) {
-            qaMenu.classList.add('hidden');
-            window.location.href = optionValue === 'mentor' ? 'actions.html#support' : 'actions.html#volunteer';
-        };
-
-        // Form Logic
-        const form = document.getElementById('movement-form');
-        const modal = document.getElementById('success-modal');
-        const modalBackdrop = document.getElementById('modal-backdrop');
-        const modalContent = document.getElementById('modal-content');
-        const closeModalBtn = document.getElementById('close-modal-btn');
-        const modalMessage = document.getElementById('modal-message');
-
-        function openModal(name) {
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            setTimeout(() => {
-                modalBackdrop.classList.remove('opacity-0');
-                modalBackdrop.classList.add('opacity-100');
-                modalContent.classList.remove('opacity-0', 'scale-95');
-                modalContent.classList.add('opacity-100', 'scale-100');
-            }, 10);
-
-            const msgEs = `Gracias, ${name}. Hemos recibido tu información y nos pondremos en contacto pronto para conectarte con nuestra comunidad.`;
-            const msgEn = `Thank you, ${name}. We have received your information and will be in contact shortly to connect you with our community.`;
-            modalMessage.textContent = currentLang === 'es' ? msgEs : msgEn;
-        }
-
-        function closeModal() {
-            modalBackdrop.classList.remove('opacity-100');
-            modalBackdrop.classList.add('opacity-0');
-            modalContent.classList.remove('opacity-100', 'scale-100');
-            modalContent.classList.add('opacity-0', 'scale-95');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-            }, 300);
-        }
-
-        closeModalBtn.addEventListener('click', closeModal);
-        modalBackdrop.addEventListener('click', closeModal);
-
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const firstName = document.getElementById('firstName').value;
-            alert(currentLang === "es" ? "Las inscripciones todavía no están disponibles." : "Signups are not available yet.");
-            // Do not claim to have collected data before a real form backend is connected.
-            document.getElementById('role-select').selectedIndex = 0;
-        });
-
-        // Expand Instagram reel within the site, with a direct Instagram fallback.
+        // All participation links lead to actual pages and services.
+            // Expand Instagram reel within the site, with a direct Instagram fallback.
         const instagramOverlay = document.getElementById('instagram-fullscreen');
         const instagramPlayer = document.getElementById('instagram-fullscreen-player');
         const instagramOpen = document.getElementById('instagram-fullscreen-btn');
