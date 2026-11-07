@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Founder navigation shortcuts for En el Nombre del Pueblo.">
+<title>Founder view | En el Nombre del Pueblo</title>
+<style>
+:root{font-family:Inter,system-ui,-apple-system,sans-serif;color-scheme:dark;background:#0f172a;color:#e2e8f0}
+*{box-sizing:border-box}body{margin:0;line-height:1.5}a{color:#fbbf24}a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #fbbf24;outline-offset:3px}
+header{background:#172134;border-bottom:1px solid #364255;padding:1rem max(1rem,calc((100vw - 1080px)/2));display:flex;gap:1.25rem;justify-content:space-between;align-items:center;flex-wrap:wrap}
+h1,h2,h3{line-height:1.2}h1{font-size:clamp(1.8rem,4vw,3rem);letter-spacing:-.03em;margin:.25rem 0}h2{font-size:1.3rem;margin:.1rem 0 .8rem}
+.brand{text-decoration:none;font-weight:800;color:white}.brand span{color:#fbbf24}
+main{max-width:1080px;margin:0 auto;padding:2rem 1rem 5rem}
+.lead{color:#94a3b8;font-size:1rem;max-width:720px}.eyebrow{font-size:.75rem;text-transform:uppercase;letter-spacing:.13em;color:#fbbf24;font-weight:800}
+.panel{background:#1e293b;border:1px solid #354253;padding:1.15rem 1.3rem;margin:1rem 0;border-radius:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:1rem;margin:1rem 0}
+.grid .panel{margin:0}.status{font-size:.8rem;display:inline-block;color:#cbd5e1;border:1px solid #64748b;border-radius:20px;padding:.1rem .6rem}
+ul{padding-left:1.25rem}li{margin:.7rem 0}li small{color:#94a3b8;display:block}
+.kicker{font-size:.85rem;color:#94a3b8}input{font:inherit;width:100%;max-width:350px;padding:.7rem .8rem;color:white;background:#0f172a;border:1px solid #64748b;border-radius:6px}
+button{cursor:pointer;font:inherit;font-weight:700;padding:.7rem 1rem;border:none;border-radius:6px;background:#fbbf24;color:#111827}
+button.secondary{background:#263344;color:#fbbf24;border:1px solid #64748b}
+.actions{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}.actions a{padding:.6rem .8rem;border:1px solid #64748b;border-radius:5px;text-decoration:none;font-weight:600}
+.actions a:hover{background:#354253}.muted{color:#94a3b8}.security{font-size:.86rem;color:#cbd5e1;margin-top:.7rem}.hidden{display:none!important}
+#unlock-msg{min-height:1.5rem;color:#fca5a5}
+footer{border-top:1px solid #334155;margin:2rem 0;color:#94a3b8;padding-top:1.2rem}
+</style>
+</head>
+<body>
+<header><a class="brand" href="./index.html">EN EL NOMBRE <span>DEL PUEBLO</span></a><div class="actions"><a href="./actions.html">Public actions</a><button type="button" class="secondary hidden" id="lock">Lock shortcut</button></div></header>
+<main>
+<p class="eyebrow">Founder view · one-page orientation</p>
+<h1>What needs to happen next?</h1>
+<p class="lead">A quick view of goals, next actions, and where to find the source. It is a navigation tool, not a second task database.</p>
+<section id="entry" class="panel">
+<h2>Open founder shortcuts</h2>
+<p>Enter the shared navigation word to reveal links to the working documents.</p>
+<form id="gate" class="actions" autocomplete="off">
+<label for="word" class="hidden">Navigation word</label>
+<input id="word" type="password" placeholder="Shared word" aria-label="Navigation word" required autocomplete="off">
+<button type="submit">Open view</button>
+</form>
+<p id="unlock-msg" aria-live="polite"></p>
+<p class="security">Convenience only: this is a publicly hosted static page, not an encrypted private workspace. GitHub/Google documents require their own permissions.</p>
+</section>
+<section id="dashboard" class="hidden" aria-label="Founder overview">
+<div class="grid">
+<div class="panel">
+<p class="eyebrow">Current milestone</p><h2 id="milestone">First volunteer activity</h2><p id="phase" class="status">Planning</p><p class="kicker" id="snapshot-date"></p>
+</div>
+<div class="panel">
+<p class="eyebrow">Reality check</p><p id="evidence">No confirmed event yet.</p>
+<a href="actions.html#volunteer">Public activity status</a>
+</div>
+</div>
+<div class="panel">
+<div class="actions" style="justify-content:space-between"><h2 style="margin:0">Next actions</h2><a href="https://github.com/JadanPoll/Our_Volunteering_Organization/blob/main/Operations/Now.json" target="_blank" rel="noopener noreferrer">Open canonical task list</a></div>
+<ol id="next-list"></ol>
+<p class="kicker">This is a dated, public-safe projection. The private GitHub file is the source of truth; changes made there do not automatically appear here.</p>
+</div>
+<div class="panel">
+<h2>Open the source for the question at hand</h2>
+<div class="grid">
+<div><h3>Run the organization</h3><div class="actions">
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/JadanPoll/Our_Volunteering_Organization/blob/main/Operations/Now.json">What next?</a>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/JadanPoll/Our_Volunteering_Organization/blob/main/Projects/First_Five_Volunteers.json">First activity</a>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/JadanPoll/Our_Volunteering_Organization/blob/main/Operations/Weekly_Review.md">Weekly review</a>
+</div></div>
+<div><h3>Decisions and money</h3><div class="actions">
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/JadanPoll/Our_Volunteering_Organization/blob/main/Funding/Budget_Scenarios.json">$0–$10k scenarios</a>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/JadanPoll/Our_Volunteering_Organization/blob/main/Funding/YEF_2026.json">YEF status</a>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/JadanPoll/Our_Volunteering_Organization/blob/main/Organization/Decisions.json">Why we decided</a>
+</div></div>
+<div><h3>People and knowledge</h3><div class="actions">
+<a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/document/d/19nwYhnfqXvyB12fGFxZF2Jp2aTVsrvs4XP6pfY5mkDE/edit">Team-facing plan</a>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/JadanPoll/Our_Volunteering_Organization/blob/main/NAVIGATION.md">Ask any question</a>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/JadanPoll/Our_Volunteering_Organization/tree/main/Founder_Notes">Founder notes (restricted)</a>
+</div></div>
+<div><h3>Website and public delivery</h3><div class="actions">
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/JadanPoll/In_The_Name_Of_The_People/edit/main/public_updates.json">Publish a confirmed event</a>
+<a href="actions.html">Test public actions</a>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/JadanPoll/In_The_Name_Of_The_People">Website source</a>
+</div></div>
+</div>
+<p class="security">The links above may ask you to sign in, or may be unavailable unless you have explicit access. No private records are embedded or retrieved by this page.</p>
+</div>
+</section>
+<footer>En el Nombre del Pueblo · <a href="index.html">Public website</a> · <a href="actions.html">Take action</a></footer>
+</main>
+<script>
+'use strict';
+const gate=document.getElementById('gate');
+const dashboard=document.getElementById('dashboard');
+const entry=document.getElementById('entry');
+const lock=document.getElementById('lock');
+function showDashboard(){
+ entry.classList.add('hidden'); dashboard.classList.remove('hidden'); lock.classList.remove('hidden');
+ loadView();
+}
+function hideDashboard(){
+ sessionStorage.removeItem('founder_nav_open');
+ dashboard.classList.add('hidden');entry.classList.remove('hidden');lock.classList.add('hidden');
+ document.getElementById('word').value='';document.getElementById('word').focus();
+}
+gate.addEventListener('submit',e=>{
+ e.preventDefault();
+ if(document.getElementById('word').value.trim().toLowerCase()!=='founder'){
+   document.getElementById('unlock-msg').textContent='That is not the navigation word.';
+   return;
+ }
+ document.getElementById('unlock-msg').textContent='';
+ sessionStorage.setItem('founder_nav_open','1');showDashboard();
+});
+lock.addEventListener('click',hideDashboard);
+if(sessionStorage.getItem('founder_nav_open')==='1')showDashboard();
+async function loadView(){
+ const list=document.getElementById('next-list');
+ try{
+  const r=await fetch('./founder_view.json',{cache:'no-store'});if(!r.ok)throw Error('unavailable');
+  const data=await r.json();
+  document.getElementById('milestone').textContent=data.milestone_en;
+  document.getElementById('phase').textContent=data.phase_en;
+  document.getElementById('snapshot-date').textContent='Last summarized: '+data.as_of;
+  document.getElementById('evidence').textContent=data.evidence_en;
+  list.replaceChildren();
+  for(const task of data.tasks||[]){
+   if(typeof task.en!=='string')continue;
+   const li=document.createElement('li'), t=document.createElement('span'), st=document.createElement('small');
+   t.textContent=task.en;st.textContent=task.state==='checking'?'Needs verification':'Planned';
+   li.append(t,st);list.append(li);
+  }
+ }catch(e){
+  list.replaceChildren();
+  const li=document.createElement('li');li.textContent='Snapshot unavailable. Use the canonical task list linked above.';list.append(li);
+ }
+}
+</script>
+</body></html>

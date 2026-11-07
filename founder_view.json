@@ -1,0 +1,43 @@
+{
+  "projection": "founder_shortcut_public_safe",
+  "source": "JadanPoll/Our_Volunteering_Organization",
+  "as_of": "2026-11-06",
+  "update_rule": "Derived non-sensitive snapshot, not canonical. If an activity or priority changes, edit the source first; update this projection or replace it with a safe automated export.",
+  "milestone_en": "Get five people together for a worthwhile volunteer activity; learn enough to repeat it.",
+  "milestone_es": "Reunir a cinco personas para una actividad útil de voluntariado; aprender cómo repetirla.",
+  "phase_en": "Planning the first activity",
+  "phase_es": "Preparando la primera actividad",
+  "tasks": [
+    {
+      "id": "N-01",
+      "en": "Choose an actual first volunteer activity and confirm a suitable host.",
+      "es": "Elegir una primera actividad real y confirmar una organización anfitriona.",
+      "state": "proposed",
+      "source": "Operations/Now.json"
+    },
+    {
+      "id": "N-02",
+      "en": "Invite five participants after the activity and safety requirements are known.",
+      "es": "Invitar a cinco personas cuando se confirmen la actividad y sus requisitos.",
+      "state": "proposed",
+      "source": "Operations/Now.json"
+    },
+    {
+      "id": "N-03",
+      "en": "Agree on one team chat and a simple weekly review.",
+      "es": "Acordar un chat de equipo y una revisión semanal sencilla.",
+      "state": "proposed",
+      "source": "Operations/Now.json"
+    },
+    {
+      "id": "N-04",
+      "en": "Confirm the YEF meeting and funding conditions before assuming any budget is available.",
+      "es": "Confirmar la reunión con YEF y las condiciones antes de contar con esos fondos.",
+      "state": "checking",
+      "source": "Operations/Now.json"
+    }
+  ],
+  "evidence_en": "No completed first activity or grant award has been verified in the organization records yet.",
+  "evidence_es": "Todavía no se ha verificado una primera actividad completada ni una adjudicación de fondos.",
+  "exposure": "This entire file is public. Never add internal correspondence, names of volunteers, founder notes, unpublished finances or access tokens."
+}
