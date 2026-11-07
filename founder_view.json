@@ -1,8 +1,5 @@
 {
-  "projection": "founder_shortcut_public_safe",
-  "source": "JadanPoll/Our_Volunteering_Organization",
   "as_of": "2026-11-06",
-  "update_rule": "Derived non-sensitive snapshot, not canonical. If an activity or priority changes, edit the source first; update this projection or replace it with a safe automated export.",
   "milestone_en": "Get five people together for a worthwhile volunteer activity; learn enough to repeat it.",
   "milestone_es": "Reunir a cinco personas para una actividad útil de voluntariado; aprender cómo repetirla.",
   "phase_en": "Planning the first activity",
@@ -38,6 +35,5 @@
     }
   ],
   "evidence_en": "No completed first activity or grant award has been verified in the organization records yet.",
-  "evidence_es": "Todavía no se ha verificado una primera actividad completada ni una adjudicación de fondos.",
-  "exposure": "This entire file is public. Never add internal correspondence, names of volunteers, founder notes, unpublished finances or access tokens."
+  "evidence_es": "Todavía no se ha verificado una primera actividad completada ni una adjudicación de fondos."
 }

@@ -67,7 +67,7 @@
                         <button onclick="setLanguage('en')" id="btn-en-desktop" class="lang-btn hover:text-white transition-colors">EN</button>
                     </div>
 
-                    <a href="#join" data-i18n="nav_join" class="bg-brand-yellow hover:bg-white text-brand-black px-6 py-2.5 font-bold uppercase tracking-wider transition-all duration-300 transform hover:-translate-y-1">
+                    <a href="actions.html#volunteer" data-i18n="nav_join" class="bg-brand-yellow hover:bg-white text-brand-black px-6 py-2.5 font-bold uppercase tracking-wider transition-all duration-300 transform hover:-translate-y-1">
                         Únete al Movimiento
                     </a>
                 </div>
@@ -94,7 +94,7 @@
                 <a href="#story" data-i18n="nav_story" class="block px-3 py-3 text-white hover:bg-white/5 rounded font-medium uppercase tracking-wide">Nuestra Historia</a>
                 <a href="#education" data-i18n="nav_education" class="block px-3 py-3 text-white hover:bg-white/5 rounded font-medium uppercase tracking-wide">Educación</a>
                 <a href="#resources" data-i18n="nav_resources" class="block px-3 py-3 text-white hover:bg-white/5 rounded font-medium uppercase tracking-wide">Recursos</a>
-                <a href="#join" data-i18n="nav_join" class="block px-3 py-3 mt-4 text-center bg-brand-yellow text-brand-black font-bold uppercase tracking-wide">Únete al Movimiento</a>
+                <a href="actions.html#volunteer" data-i18n="nav_join" class="block px-3 py-3 mt-4 text-center bg-brand-yellow text-brand-black font-bold uppercase tracking-wide">Únete al Movimiento</a>
             </div>
         </div>
     </nav>
@@ -110,8 +110,9 @@
             <p data-i18n="hero_author" class="mt-4 font-bold">— La historia de Bryan</p>
           </div>
           <div class="hero-buttons flex flex-wrap gap-5">
-            <a href="actions.html" class="notebook-button marker-button"><span data-i18n="hero_action">Participa hoy</span><span aria-hidden="true">↗</span></a>
-            <a href="#story" class="notebook-button outline-button"><span data-i18n="hero_cta">Escucha la Historia</span><span aria-hidden="true">↓</span></a>
+            <a href="actions.html#volunteer" class="notebook-button marker-button"><span data-i18n="hero_action">Participa hoy</span><span aria-hidden="true">↗</span></a>
+            <a href="actions.html#support" class="notebook-button outline-button"><span data-i18n="hero_support">Encontrar ayuda</span><span aria-hidden="true">↗</span></a>
+            <a href="#story" class="notebook-button story-link"><span data-i18n="hero_cta">Escucha la Historia</span><span aria-hidden="true">↓</span></a>
           </div>
         </div>
         <div class="hero-art" aria-hidden="true">
@@ -131,12 +132,20 @@
         </div>
       </div>
     </section>
-    <nav class="start-here max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Empieza aquí / Start here">
-      <span class="start-heading" data-i18n="start_heading">¿Por dónde empezamos? ↘</span>
-      <a class="start-card note-yellow" href="actions.html#volunteer"><span aria-hidden="true">✳</span><span data-i18n="start_volunteer">Quiero ayudar</span><span aria-hidden="true">↗</span></a>
-      <a class="start-card note-blue" href="actions.html#support"><span aria-hidden="true">✎</span><span data-i18n="start_support">Busco apoyo</span><span aria-hidden="true">↗</span></a>
-      <a class="start-card note-peach" href="#story"><span aria-hidden="true">♡</span><span data-i18n="start_story">Conoce la historia</span><span aria-hidden="true">↓</span></a>
-    </nav>
+    <section class="homepage-event" aria-labelledby="next-event-title">
+  <div class="homepage-event-inner max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="homepage-event-copy">
+      <p class="event-scribble" data-i18n="next_label">↘ ¿Qué viene ahora?</p>
+      <h2 id="next-event-title" data-i18n="next_title">Próximo voluntariado</h2>
+      <p id="homepage-event-status" aria-live="polite" data-i18n="next_pending">Estamos organizando nuestra primera actividad. Todavía no hay fecha confirmada.</p>
+      <a id="homepage-event-link" class="homepage-event-details hidden" href="actions.html#volunteer" data-i18n="next_details">Ver detalles ↗</a>
+    </div>
+    <div class="homepage-event-links">
+      <a class="workparty-link" href="https://sfrpd.my.salesforce-sites.com/SFRPDCalendar" target="_blank" rel="noopener noreferrer"><span data-i18n="next_park">Ver jornadas de voluntariado en parques de SF</span><span aria-hidden="true">↗</span></a>
+      <a class="ask-link" href="https://www.instagram.com/nombre__del__pueblo/" target="_blank" rel="noopener noreferrer" data-i18n="next_ask">Preguntar por nuestra próxima actividad</a>
+    </div>
+  </div>
+</section>
     <!-- Story / Timeline Section -->
     <section id="story" class="notebook-story py-24 bg-brand-black relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -368,7 +377,7 @@
                 community_video_link: "Ver en YouTube",
                 first_event_link: "Ver el video en Instagram",
                 first_event_fullscreen: "Ver en pantalla completa",
-                clip_note: "Fragmento de prueba: 24:04–25:04. Seleccionaremos más clips después de revisar el video.",
+                clip_note: "Un minuto de la conversación completa.",
                 clip_short: "Ver un minuto",
                 clip_full: "Ver el video completo",
                 nav_story: "Nuestra Historia",
@@ -377,13 +386,16 @@
                 link_immigration: "Ayuda legal de inmigración en SF",
                 link_jobs: "Recursos de empleo (Biblioteca de SF)",
                 link_volunteer: "Ver opciones de voluntariado",
-                nav_join: "Únete al Movimiento",
+                nav_join: "Quiero participar",
+                hero_support: "Encontrar ayuda",
+                next_label: "↘ ¿Qué viene ahora?",
+                next_title: "Próximo voluntariado",
+                next_pending: "Estamos organizando nuestra primera actividad. Todavía no hay fecha confirmada.",
+                next_details: "Ver detalles ↗",
+                next_park: "Ver jornadas de voluntariado en parques de SF",
+                next_ask: "Preguntar por nuestra próxima actividad",
                 hero_kicker: "✳ de la comunidad, para la comunidad",
                 poster_caption: "hecho por la gente, para la gente ↗",
-                start_heading: "¿Por dónde empezamos? ↘",
-                start_volunteer: "Quiero ayudar",
-                start_support: "Busco apoyo",
-                start_story: "Conoce la historia",
                 poster_note: "Aquí empieza lo que sigue.",
                 join_label: "✳ tu comunidad te necesita",
                 join_volunteer: "Ver cómo participar ↗",
@@ -440,7 +452,7 @@
                 community_video_link: "Watch on YouTube",
                 first_event_link: "Watch on Instagram",
                 first_event_fullscreen: "Watch fullscreen",
-                clip_note: "Preview excerpt: 24:04–25:04. More clips will be selected after reviewing the recording.",
+                clip_note: "A one-minute excerpt from the full conversation.",
                 clip_short: "Play 1-minute excerpt",
                 clip_full: "Watch full video",
                 nav_story: "Our Story",
@@ -449,13 +461,16 @@
                 link_immigration: "Find SF immigration legal help",
                 link_jobs: "Job resources (SF Public Library)",
                 link_volunteer: "Find volunteer opportunities",
-                nav_join: "Join the Movement",
+                nav_join: "Volunteer",
+                hero_support: "Find support",
+                next_label: "↘ What's happening next?",
+                next_title: "Next volunteer activity",
+                next_pending: "We're organizing our first activity. There's no confirmed date yet.",
+                next_details: "See event details ↗",
+                next_park: "Find SF park volunteer work parties",
+                next_ask: "Ask us about our next activity",
                 hero_kicker: "✳ by the community, for the community",
                 poster_caption: "built by the people, for the people ↗",
-                start_heading: "Where do we start? ↘",
-                start_volunteer: "I want to help",
-                start_support: "I need support",
-                start_story: "Hear the story",
                 poster_note: "What comes next starts here.",
                 join_label: "✳ your community needs you",
                 join_volunteer: "Find ways to help ↗",
@@ -507,7 +522,14 @@
         };
 
         // Current Language State
-        let currentLang = 'es';
+        let currentLang = 'es', currentPublicEvent = null;
+        function renderHomepageEvent(){
+          const status=document.getElementById('homepage-event-status');
+          const link=document.getElementById('homepage-event-link');
+          if(!currentPublicEvent){status.textContent=translations[currentLang].next_pending;link.classList.add('hidden');return;}
+          status.textContent=(currentLang==='es'?currentPublicEvent.title_es:currentPublicEvent.title_en)+' · '+currentPublicEvent.date_label;
+          link.href=currentPublicEvent.url;link.classList.remove('hidden');
+        }
 
         // Function to switch language
         function setLanguage(lang) {
@@ -537,8 +559,12 @@
                 }
             });
 
-            // Update Placeholder for textarea
-            // The website uses direct links instead of collecting form submissions.
+            for(const link of document.querySelectorAll('a[href^="actions.html"]')) {
+              const url=new URL(link.href);url.searchParams.set('lang',lang);link.href=url.href;
+            }
+            const url=new URL(location.href);url.searchParams.set('lang',lang);
+            history.replaceState(null,'',url.pathname+url.search+url.hash);
+            renderHomepageEvent();
         }
 
 
@@ -610,9 +636,16 @@
             window.open('https://www.youtube.com/watch?v=cOpKWxcr3WE', '_blank', 'noopener,noreferrer');
         });
 
-        // Initialize language on load (Default is Spanish as set in the HTML manually)
-        // Calling this ensures placeholders and button states are correct.
-        setLanguage('es');
+        setLanguage(new URLSearchParams(location.search).get('lang')==='en'?'en':'es');
+        fetch('./public_updates.json',{cache:'no-store'}).then(response=>{
+          if(!response.ok)throw Error('No updates');return response.json();
+        }).then(data=>{
+          if(!Array.isArray(data.events))return;
+          currentPublicEvent=data.events.find(e=>e.public===true&&e.status==='confirmed'&&
+            typeof e.title_es==='string'&&typeof e.title_en==='string'&&
+            typeof e.date_label==='string'&&typeof e.url==='string'&&/^https:\/\//.test(e.url))||null;
+          renderHomepageEvent();
+        }).catch(()=>{renderHomepageEvent();});
 
     </script>
 </body>

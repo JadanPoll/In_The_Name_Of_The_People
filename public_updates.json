@@ -1,10 +1,3 @@
 {
-  "last_reviewed": "2026-11-06",
-  "events": [],
-  "rules": [
-    "Publish only host-confirmed public events with date and a legitimate official registration/contact URL.",
-    "Events require public=true, status=confirmed, title_es, title_en, date_label, url (https).",
-    "Do not publish participant details, private organizational notes, unverified partners, or grant status.",
-    "An empty list correctly means no currently confirmed organization events."
-  ]
+  "events": []
 }
