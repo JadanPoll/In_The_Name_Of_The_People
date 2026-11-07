@@ -1,20 +1,17 @@
-# In the Name of the People — public website
+# En el Nombre del Pueblo
 
-A bilingual (Spanish/English), static public-facing website supporting community work, immigrant-support navigation, and youth volunteering.
+Our public website for community stories, volunteer opportunities, and practical resources in San Francisco. Available in Spanish and English.
 
-- `index.html` — founding story, community videos, education and public action links.
-- `actions.html` — genuinely usable public routes to volunteer opportunities and external support resources; no fake signup form.
-- `public_updates.json` — **confirmed public events only**. Leave `events` empty if no event is verified.
-- `founder.html` — short founder navigation view under the same site. The word `founder` unlocks its UI as a convenience, **not as authentication or encryption**.
-- `founder_view.json` — sanitized, explicitly public-safe summary derived from the organization's private records; it is a dated projection, not the source of truth.
+## Pages
 
-Private canonical source: [Our_Volunteering_Organization](https://github.com/JadanPoll/Our_Volunteering_Organization), whose access permissions still apply. Do not paste private notes, participant information, grant correspondence, unpublished finances, confidential project plans or tokens into a public repo, its JSON, or its pages. Anyone can read this site’s HTML and JSON regardless of the founder view's casual unlock.
+- **[Home](index.html)** — Bryan's story and the community's mission.
+- **[Get involved](actions.html)** — current ways to volunteer and find support.
+- **[Team notebook](founder.html)** — a quick view of our priorities and links to working documents.
 
-## Update flow
+## Keeping it up to date
 
-1. Record real changes in the private organization repo.
-2. If a verified activity is ready for public announcements, add it to `public_updates.json` with both language titles, confirmed status, date label and official URL.
-3. When founder-facing priorities materially change, revise `founder_view.json` from the canonical source. This is currently a manual, dated projection; **do not claim automatic sync**.
-4. Verify the public action page on a normal browser. Do not invent signup confirmation or partner affiliation.
+- Add a public event to `public_updates.json` once its date, location, and contact link are confirmed.
+- Update `founder_view.json` when team priorities change.
+- The team's working records live in [Our Volunteering Organization](https://github.com/JadanPoll/Our_Volunteering_Organization).
 
-The site's first priority is to help visitors complete real tasks, not increase page count. The public story and design are preserved.
+The team notebook's shared word is just a shortcut. Private documents still require their own sign-in.

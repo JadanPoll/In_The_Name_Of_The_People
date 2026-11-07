@@ -131,7 +131,7 @@ footer{border-top:2px dashed #aaa395;margin:2.4rem 0 0;color:var(--muted);paddin
 <div class="hero">
   <p class="eyebrow">✳ the organizer's notebook / founder view</p>
   <h1>What are we <span class="scribble-underline">making happen?</span></h1>
-  <p class="lead">The real things that matter this week, plus shortcuts to the work behind them. Less dashboard, more getting stuff done.</p>
+  <p class="lead">What we're doing next, what we know, and where to find the details.</p>
   <svg class="hero-scribble" aria-hidden="true" viewBox="0 0 190 160" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M21 20C49 11 86 23 102 44C114 60 111 76 92 81C75 85 64 70 74 62C93 46 137 75 142 107" stroke="#df7865" stroke-width="5" stroke-linecap="round"/>
     <path d="M124 99L142 117L155 93" stroke="#df7865" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -147,7 +147,7 @@ footer{border-top:2px dashed #aaa395;margin:2.4rem 0 0;color:var(--muted);paddin
 <button type="submit">Open view</button>
 </form>
 <p id="unlock-msg" aria-live="polite"></p>
-<p class="security">A friendly door, not a vault: this public page isn't encrypted. The linked private records still require GitHub / Google permissions.</p>
+<p class="security">Private documents still require sign-in.</p>
 </section>
 <section id="dashboard" class="hidden" aria-label="Founder overview">
 <div class="grid">
@@ -160,9 +160,9 @@ footer{border-top:2px dashed #aaa395;margin:2.4rem 0 0;color:var(--muted);paddin
 </div>
 </div>
 <div class="panel">
-<div class="actions" style="justify-content:space-between"><h2 style="margin:0">This week's moves <span class="hand-note">(keep it real!)</span></h2><a href="https://github.com/JadanPoll/Our_Volunteering_Organization/blob/main/Operations/Now.json" target="_blank" rel="noopener noreferrer">Open canonical task list</a></div>
+<div class="actions" style="justify-content:space-between"><h2 style="margin:0">This week's moves <span class="hand-note">(keep it real!)</span></h2><a href="https://github.com/JadanPoll/Our_Volunteering_Organization/blob/main/Operations/Now.json" target="_blank" rel="noopener noreferrer">See the full task list</a></div>
 <ol id="next-list"></ol>
-<p class="kicker">Sticky-note snapshot, not a live database. The private task list is the source of truth.</p>
+<p class="kicker">For updates, check the full task list.</p>
 </div>
 <div class="panel">
 <h2>Grab the right paper <span class="corner-star" aria-hidden="true">✎</span></h2>
@@ -188,7 +188,7 @@ footer{border-top:2px dashed #aaa395;margin:2.4rem 0 0;color:var(--muted);paddin
 <a target="_blank" rel="noopener noreferrer" href="https://github.com/JadanPoll/In_The_Name_Of_The_People">Website source</a>
 </div></div>
 </div>
-<p class="security">Some links need sign-in. This page never downloads private records — only public-safe notes and shortcuts.</p>
+<p class="security">Some links require sign-in.</p>
 </div>
 </section>
 <footer><span class="hand-note">made to be used, not admired ↗</span> · En el Nombre del Pueblo · <a href="index.html">Public website</a> · <a href="actions.html">Take action</a></footer>
@@ -227,7 +227,7 @@ async function loadView(){
   const data=await r.json();
   document.getElementById('milestone').textContent=data.milestone_en;
   document.getElementById('phase').textContent=data.phase_en;
-  document.getElementById('snapshot-date').textContent='Last summarized: '+data.as_of;
+  document.getElementById('snapshot-date').textContent='Last updated: '+data.as_of;
   document.getElementById('evidence').textContent=data.evidence_en;
   list.replaceChildren();
   for(const task of data.tasks||[]){
