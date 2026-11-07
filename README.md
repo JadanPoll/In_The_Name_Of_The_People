@@ -4,7 +4,8 @@ Our public website for community stories, volunteer opportunities, and practical
 
 ## Pages
 
-- **[Home](index.html)** — Bryan's story and the community's mission.
+- **[Home](index.html)** — what we're doing and how to get involved.
+- **[Our journey](journey.html)** — Bryan's story, community events and videos.
 - **[Get involved](actions.html)** — current ways to volunteer and find support.
 - **[Team notebook](founder.html)** — a quick view of our priorities and links to working documents.
 

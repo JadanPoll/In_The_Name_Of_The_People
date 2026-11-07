@@ -119,3 +119,29 @@ body.notebook-actions{background:linear-gradient(#fbf9ef,#f9f0e1);color:var(--in
 .notebook-site .workparty-link{display:flex;justify-content:space-between;gap:.6rem;background:#fff8dc;color:#184d67!important;padding:.66rem .85rem;border:2px solid var(--edge);border-radius:4px;text-decoration:none;font-weight:700;font-size:.87rem;box-shadow:2px 3px 0 #b6a889}
 .notebook-site .ask-link,.notebook-site .homepage-event-details{color:#205c77;text-decoration:underline;text-underline-offset:3px;font-size:.88rem}
 @media(max-width:740px){.notebook-site .homepage-event-inner{flex-direction:column;align-items:stretch}.notebook-site .homepage-event-links{min-width:0}.notebook-site .hero-art{max-width:220px}.notebook-site .hero-buttons .notebook-button{width:auto}.notebook-site .notebook-hero{padding-top:6.6rem}}
+
+/* A separate journey page, keeping the same paper-and-marker language. */
+.journey-page .journey-nav{position:sticky;top:0;z-index:40;padding:.8rem max(1rem,calc((100vw - 1100px)/2));display:flex;justify-content:space-between;align-items:center;gap:1rem;background:rgba(255,253,247,.98);border-bottom:2px solid var(--edge)}
+.journey-page .journey-brand{font-weight:800;color:var(--ink);text-decoration:none}.journey-page .journey-brand mark{color:var(--ink);background:var(--marker);padding:0 .16rem}
+.journey-page .journey-nav-links{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}.journey-page .journey-nav-links>a{color:#215b74;text-decoration:none;font-weight:700;font-size:.9rem}
+.journey-page .journey-nav-links>a:hover{text-decoration:underline}
+.journey-page .journey-nav-links .journey-nav-action{border:2px solid var(--edge);border-radius:4px;background:var(--marker);color:var(--ink);padding:.45rem .8rem}
+.journey-page .journey-lang{display:flex;gap:.3rem}.journey-page .journey-lang button{background:var(--sheet);border:1px solid #b6ada1;border-radius:3px;padding:.36rem .6rem;font-weight:800;color:var(--ink)}
+.journey-page .journey-lang button[aria-pressed="true"]{background:var(--marker);border-color:var(--edge)}
+.journey-page .journey-hero{background:#f8ecd9;border-bottom:2px dashed #c3ac87;padding:clamp(2rem,4vw,4rem) 0}
+.journey-page .journey-hero h1{font:clamp(3.7rem,8vw,6.8rem)/1.08 'Patrick Hand','Comic Sans MS',cursive;color:var(--ink);margin:.25rem 0 .65rem}
+.journey-page .journey-hero p:not(.scribble-label){color:#514940;font-size:clamp(1rem,2vw,1.23rem);max-width:660px}
+.journey-page .journey-jump{display:inline-block;margin-top:1rem;color:#235e7c;font-weight:700;text-underline-offset:4px}
+.journey-page #story,.journey-page #education{scroll-margin-top:100px}
+.journey-page #story .timeline-item>div:nth-child(2),.journey-page #story .timeline-item>div:nth-child(3){min-width:0}
+.journey-page #story iframe{max-width:100%}
+.journey-page .journey-next{text-align:center;background:#fff2c5;border-top:3px dashed #c0a261;padding:3.2rem 0}
+.journey-page .journey-next h2{font:clamp(2.4rem,5vw,3.8rem) 'Patrick Hand',cursive;color:var(--ink);margin:0 0 .5rem}
+.journey-page .journey-next p{color:#5c5348;max-width:590px;margin:0 auto 1.2rem}
+.journey-page .journey-next-actions{display:flex;justify-content:center;gap:.9rem;flex-wrap:wrap}
+.journey-page .journey-next-actions a{border:2px solid var(--edge);border-radius:4px;background:var(--marker);box-shadow:3px 3px 0 var(--edge);padding:.7rem 1rem;text-decoration:none;color:var(--ink);font-weight:800}
+.journey-page .journey-next-actions a:nth-child(2){background:var(--sky)}
+.journey-page .journey-footer{text-align:center;background:var(--sheet);border-top:2px solid var(--edge);padding:1.25rem;color:#5c5549}
+.journey-page .journey-footer a{font-weight:700;color:#225e79}
+@media(max-width:760px){.journey-page .journey-nav{flex-wrap:wrap;gap:.6rem}.journey-page .journey-nav-links{width:100%;justify-content:space-between;gap:.7rem}.journey-page #story .timeline-line{left:26px!important}.journey-page #story .timeline-dot{left:26px!important}.journey-page .journey-hero{padding:2.3rem 0}}
+@media(prefers-reduced-motion:reduce){.journey-page *{animation-duration:.01ms!important;transition-duration:.01ms!important}}

@@ -2,7 +2,7 @@
 
 The first question is whether someone can actually do what they came here to do.
 
-The everyday paths are **volunteer**, **find community help**, **contact the organizers**, and **check the next event**. A first-time visitor should find these without an explanation, and a returning visitor should not need to remember a hidden feature.
+The everyday paths are **volunteer**, **find community help**, **contact the organizers**, and **check the next event**. The story and videos live on `journey.html`, prominently linked from the homepage. A first-time visitor should find these without an explanation, and a returning visitor should not need to remember a hidden feature.
 
 - Keep the light, handwritten community-notebook feel. Preserve Bryan's story and the bilingual video content.
 - Buttons must lead somewhere useful. Don't add an action unless the destination works; never simulate registration or successful submission.
