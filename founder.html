@@ -98,7 +98,7 @@ function showDashboard(){
  loadView();
 }
 function hideDashboard(){
- sessionStorage.removeItem('founder_nav_open');
+ try { sessionStorage.removeItem('founder_nav_open'); } catch (error) { /* Storage is optional. */ }
  dashboard.classList.add('hidden');entry.classList.remove('hidden');lock.classList.add('hidden');
  document.getElementById('word').value='';document.getElementById('word').focus();
 }
@@ -109,10 +109,11 @@ gate.addEventListener('submit',e=>{
    return;
  }
  document.getElementById('unlock-msg').textContent='';
- sessionStorage.setItem('founder_nav_open','1');showDashboard();
+ try { sessionStorage.setItem('founder_nav_open','1'); } catch (error) { /* Shortcut still works if storage is blocked. */ }
+ showDashboard();
 });
 lock.addEventListener('click',hideDashboard);
-if(sessionStorage.getItem('founder_nav_open')==='1')showDashboard();
+try { if(sessionStorage.getItem('founder_nav_open')==='1')showDashboard(); } catch (error) { /* Manual unlock remains available. */ }
 async function loadView(){
  const list=document.getElementById('next-list');
  try{
