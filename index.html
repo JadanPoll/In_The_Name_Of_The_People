@@ -100,36 +100,45 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center mural-bg pt-20 overflow-hidden">
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30 mix-blend-overlay pointer-events-none"></div>
-        
-        <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 reveal active">
-            <h1 data-i18n-html="hero_title" class="font-display text-5xl md:text-7xl lg:text-8xl font-black text-white uppercase leading-[0.9] tracking-tighter mb-8">
-                De nuestra historia, <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow to-orange-500">nace un movimiento.</span>
-            </h1>
-            
-            <div class="max-w-3xl mx-auto bg-brand-black/40 backdrop-blur-sm p-6 md:p-8 border-l-4 border-brand-red text-left mb-10">
-                <p data-i18n="hero_quote" class="text-xl md:text-3xl font-light text-white leading-relaxed">
-                    De los 17 a los 20 años estuve encarcelado. Mi historia continúa en la comunidad.
-                </p>
-                <p data-i18n="hero_author" class="mt-4 text-brand-yellow font-bold uppercase tracking-widest text-sm">— La historia de Bryan</p>
-            </div>
-
-            <div class="flex flex-col sm:flex-row justify-center gap-6 mt-12">
-                <a href="#story" class="bg-brand-red hover:bg-red-700 text-white px-8 py-4 font-bold text-lg uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-3 group">
-                    <span data-i18n="hero_cta">Escucha la Historia</span>
-                    <i class="fa-solid fa-arrow-down transform group-hover:translate-y-1 transition-transform"></i>
-                </a>
-                <a href="actions.html" class="bg-brand-yellow hover:bg-white text-brand-black px-8 py-4 font-bold text-lg uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-3">
-                    <i class="fa-solid fa-hand-holding-heart"></i><span data-i18n="hero_action">Participa hoy</span>
-                </a>
-            </div>
+    <section class="notebook-hero relative overflow-hidden">
+      <div class="hero-grid max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="hero-copy">
+          <p class="scribble-label" data-i18n="hero_kicker">✳ de la comunidad, para la comunidad</p>
+          <h1 data-i18n-html="hero_title" class="font-display text-5xl md:text-7xl lg:text-8xl font-black leading-none tracking-tighter mb-8">De nuestra historia,<br><span>nace un movimiento.</span></h1>
+          <div class="hero-quote p-6 md:p-8 mb-8 text-left">
+            <p data-i18n="hero_quote" class="text-xl md:text-2xl leading-relaxed">De los 17 a los 20 años estuve encarcelado. Mi historia continúa en la comunidad.</p>
+            <p data-i18n="hero_author" class="mt-4 font-bold">— La historia de Bryan</p>
+          </div>
+          <div class="hero-buttons flex flex-wrap gap-5">
+            <a href="actions.html" class="notebook-button marker-button"><span data-i18n="hero_action">Participa hoy</span><span aria-hidden="true">↗</span></a>
+            <a href="#story" class="notebook-button outline-button"><span data-i18n="hero_cta">Escucha la Historia</span><span aria-hidden="true">↓</span></a>
+          </div>
         </div>
+        <div class="hero-art" aria-hidden="true">
+          <svg viewBox="0 0 430 470" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M43 61L385 29L411 403L65 432Z" fill="#ffdf83" stroke="#2c2927" stroke-width="5"/>
+            <path d="M69 87L359 65L380 370L93 398Z" fill="#fff8db" stroke="#c56a51" stroke-width="3" stroke-dasharray="5 8"/>
+            <path d="M90 68C138 23 209 33 243 53M313 430c29 10 66 3 86-13" stroke="#d86d58" stroke-width="7" stroke-linecap="round"/>
+            <circle cx="128" cy="172" r="31" fill="#f5a88e" stroke="#282625" stroke-width="6"/>
+            <circle cx="220" cy="159" r="34" fill="#cbdfcf" stroke="#282625" stroke-width="6"/>
+            <circle cx="314" cy="175" r="31" fill="#b8d5ed" stroke="#282625" stroke-width="6"/>
+            <path d="M99 274Q125 217 157 270M185 270Q217 203 251 267M280 273Q315 211 350 276" stroke="#282625" stroke-width="10" stroke-linecap="round"/>
+            <path d="M105 279C155 252 180 263 215 282C250 302 293 271 332 276" stroke="#282625" stroke-width="8" stroke-linecap="round"/>
+            <path d="M120 329l7 17 20 1-15 13 5 18-18-10-16 10 3-20-16-10 21-2zM313 332l8 18 20 1-16 14 5 18-19-11-17 11 5-20-17-11 21-2z" fill="#f5ae73" stroke="#282625" stroke-width="3"/>
+            <path d="M176 387q43-22 78-4M55 32l12 14 14-11M385 443l13 13 13-13" stroke="#437a91" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+          <span class="art-caption" data-i18n="poster_caption">hecho por la gente, para la gente ↗</span>
+        </div>
+      </div>
     </section>
-
+    <nav class="start-here max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Empieza aquí / Start here">
+      <span class="start-heading" data-i18n="start_heading">¿Por dónde empezamos? ↘</span>
+      <a class="start-card note-yellow" href="actions.html#volunteer"><span aria-hidden="true">✳</span><span data-i18n="start_volunteer">Quiero ayudar</span><span aria-hidden="true">↗</span></a>
+      <a class="start-card note-blue" href="actions.html#support"><span aria-hidden="true">✎</span><span data-i18n="start_support">Busco apoyo</span><span aria-hidden="true">↗</span></a>
+      <a class="start-card note-peach" href="#story"><span aria-hidden="true">♡</span><span data-i18n="start_story">Conoce la historia</span><span aria-hidden="true">↓</span></a>
+    </nav>
     <!-- Story / Timeline Section -->
-    <section id="story" class="py-24 bg-brand-black relative">
+    <section id="story" class="notebook-story py-24 bg-brand-black relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20 reveal">
                 <h2 data-i18n="story_title" class="font-display text-4xl md:text-6xl font-black text-white uppercase tracking-tighter">La Trayectoria</h2>
@@ -185,7 +194,19 @@
                         </p>
                     </div>
                     <div class="hidden md:block w-5/12">
-                        <img src="https://placehold.co/600x400/e11d48/ffffff?text=El+Movimiento" alt="The Movement Today" class="w-full h-auto shadow-2xl rounded-sm">
+                        <div class="community-poster" role="img" aria-label="Dibujo de gente que se reúne / Drawing of people coming together">
+  <svg viewBox="0 0 440 310" xmlns="http://www.w3.org/2000/svg">
+    <rect x="15" y="24" width="404" height="262" rx="7" fill="#fff2cf" stroke="#3d3b37" stroke-width="5" transform="rotate(-2 220 155)"/>
+    <path d="M38 61h367" stroke="#dfaa56" stroke-width="4" stroke-dasharray="8 9"/>
+    <circle cx="109" cy="127" r="24" fill="#f6aa91" stroke="#34312d" stroke-width="4"/>
+    <circle cx="222" cy="105" r="23" fill="#bddece" stroke="#34312d" stroke-width="4"/>
+    <circle cx="333" cy="132" r="25" fill="#bcd7f0" stroke="#34312d" stroke-width="4"/>
+    <path d="M75 215q36-80 73 0m39-21q34-82 71 3m40 21q34-84 72-4" fill="none" stroke="#34312d" stroke-linecap="round" stroke-width="9"/>
+    <path d="M125 217q87 55 176 0" fill="none" stroke="#bb6359" stroke-width="6" stroke-linecap="round"/>
+    <path d="M181 261l17-12 11 16 14-16 17 12" fill="none" stroke="#396c82" stroke-width="6" stroke-linecap="round"/>
+  </svg>
+  <span class="poster-note" data-i18n="poster_note">Aquí empieza lo que sigue.</span>
+</div>
                     </div>
                 </div>
 
@@ -194,7 +215,7 @@
     </section>
 
     <!-- Interactive Video/Education Section -->
-    <section id="education" class="py-24 bg-brand-dark border-y border-white/5">
+    <section id="education" class="notebook-education py-24 bg-brand-dark border-y border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 
@@ -244,7 +265,7 @@
     </section>
 
     <!-- Resources / How We Help Section -->
-    <section id="resources" class="py-24 bg-brand-black">
+    <section id="resources" class="notebook-resources py-24 bg-brand-black">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 data-i18n="res_title" class="font-display text-4xl md:text-5xl font-black text-white uppercase tracking-tighter mb-4 reveal">Apoyo y Acción</h2>
             <p data-i18n="res_desc" class="text-xl text-slate-400 max-w-3xl mx-auto mb-16 reveal">Existimos para ayudar a nuestra comunidad inmigrante a construir bases sólidas a través de recursos directos, conexiones robustas y oportunidades tangibles.</p>
@@ -391,7 +412,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-brand-black text-slate-400 py-12 border-t border-slate-800">
+    <footer class="notebook-footer bg-brand-black text-slate-400 py-12 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6">
                 <div class="flex items-center gap-3">
@@ -411,7 +432,7 @@
                 <p>&copy; <span id="year"></span> En el Nombre del Pueblo. <span data-i18n="footer_slogan">Construido por la gente, para la gente.</span></p>
                 <div class="mt-4 md:mt-0 space-x-4">
                     <a href="actions.html" data-i18n="action_link" class="hover:text-white transition-colors">Ver actividades y recursos útiles</a>
-                    <a href="founder.html" class="hover:text-white transition-colors text-slate-500">Equipo / Team</a>
+                    <a href="founder.html" class="hover:text-white transition-colors text-slate-500">Team notebook</a>
                 </div>
             </div>
         </div>
