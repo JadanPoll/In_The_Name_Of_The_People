@@ -191,7 +191,7 @@ footer{border-top:2px dashed #aaa395;margin:2.4rem 0 0;color:var(--muted);paddin
 <p class="security">Some links require sign-in.</p>
 </div>
 </section>
-<footer><span class="hand-note">made to be used, not admired ↗</span> · En el Nombre del Pueblo · <a href="index.html">Public website</a> · <a href="actions.html">Take action</a></footer>
+<footer>En el Nombre del Pueblo · <a href="index.html">Home</a> · <a href="actions.html">Get involved</a></footer>
 </main>
 <script>
 'use strict';
@@ -238,7 +238,7 @@ async function loadView(){
   }
  }catch(e){
   list.replaceChildren();
-  const li=document.createElement('li');li.textContent='Snapshot unavailable. Use the canonical task list linked above.';list.append(li);
+  const li=document.createElement('li');li.textContent='List unavailable. Open the full task list above.';list.append(li);
  }
 }
 </script>

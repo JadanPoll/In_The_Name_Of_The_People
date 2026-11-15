@@ -1,20 +1,29 @@
 # En el Nombre del Pueblo
 
-Our public website for community stories, volunteer opportunities, and practical resources in San Francisco. Available in Spanish and English.
+We're bringing people together to support our communities, create opportunities for young people, and tell the stories that matter to us.
 
-## Pages
+The project grew out of Bryan's experience and his determination to do something useful with it. We want this website to be somewhere people can actually find help, volunteer, and see the community reflected in its own words and artwork.
 
-- **[Home](index.html)** — what we're doing and how to get involved.
-- **[Our journey](journey.html)** — Bryan's story, community events and videos.
-- **[Get involved](actions.html)** — current ways to volunteer and find support.
-- **[Team notebook](founder.html)** — a quick view of our priorities and links to working documents.
+## What we're working on
 
-## Keeping it up to date
+- Get our first five volunteers together for a community activity.
+- Make it easy to find local support and ways to help.
+- Share [Bryan's journey](journey.html) and the conversations behind this organization.
+- Bring the work of local artists, musicians, writers, and kids into the website itself.
 
-- Add a public event to `public_updates.json` once its date, location, and contact link are confirmed.
-- Update `founder_view.json` when team priorities change.
-- The team's working records live in [Our Volunteering Organization](https://github.com/JadanPoll/Our_Volunteering_Organization).
+## Visit the website
 
-The team notebook's shared word is just a shortcut. Private documents still require their own sign-in.
+- [Home](https://jadanpoll.github.io/In_The_Name_Of_The_People/)
+- [Our journey](https://jadanpoll.github.io/In_The_Name_Of_The_People/journey.html)
+- [Get involved or find support](https://jadanpoll.github.io/In_The_Name_Of_The_People/actions.html)
+- [Team notebook](https://jadanpoll.github.io/In_The_Name_Of_The_People/founder.html)
 
-[Previous visual design](https://github.com/JadanPoll/In_The_Name_Of_The_People/tree/archive/pre-community-notebook-2026-11) is saved if we ever want to compare or reuse it.
+## What's in this repo
+
+- **[Home](index.html)** — the mission, next activity and ways to take part.
+- **[Journey](journey.html)** — Bryan's story and community videos.
+- **[Get involved](actions.html)** — volunteering and useful local resources.
+- **[Team notebook](founder.html)** — priorities and links for organizers.
+- **[Styles](styles/)** — the drawings, paper textures and layout of the site.
+
+Our [volunteering organization](https://github.com/JadanPoll/Our_Volunteering_Organization) has the broader plans and ideas.
